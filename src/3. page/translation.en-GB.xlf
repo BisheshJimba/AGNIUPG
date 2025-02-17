@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
+  <file datatype="xml" source-language="en-US" target-language="en-GB" original="Please update this value">
+    <body>
+      <group id="body">
+        <trans-unit id="Page 399713418 - Action 1048544841 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Service Target</source>
+          <target>Service Target</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Service Advisor Role Center - Action Page Service Target - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2226863606 - Control 1024873738 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Preview</source>
+          <target>Attachment Name</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Preview And Sign - Control Attachment Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3481629512 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Service Target</source>
+          <target>Service Target</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Service Target - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3481629512 - Action 1453566837 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Set Target</source>
+          <target>Set Target</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Service Target - Action SetTarget - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1549130899 - Action 2794470117 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Next Chart</source>
+          <target>Next Chart</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Service Chart - Action Next Chart - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3856523029 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Power BI Dates</source>
+          <target>Power BI Dates</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Power BI Dates - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 984169427 - Control 912261439 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Period</source>
+          <target>Period</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Service Target Settings - Control Period - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 984169427 - Control 2445482498 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>General</source>
+          <target>General</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Service Target Settings - Control General - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 984169427 - Control 572629000 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Week</source>
+          <target>Week</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Service Target Settings - Control Week - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 984169427 - Action 3344078213 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Fill Target Period</source>
+          <target>Fill Target Period</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Service Target Settings - Action FillTargetPeriod - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 984169427 - NamedType 3114637384" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Target Period Filled!</source>
+          <target>Target Period Filled!</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Service Target Settings - NamedType Text001</note>
+        </trans-unit>
+        <trans-unit id="Page 984169427 - NamedType 3752334001" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Start Date not specified</source>
+          <target>Start Date not specified</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Service Target Settings - NamedType Text002</note>
+        </trans-unit>
+        <trans-unit id="Page 984169427 - NamedType 95063322" size-unit="char" translate="yes" xml:space="preserve">
+          <source>End Date not specified</source>
+          <target>End Date not specified</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Service Target Settings - NamedType Text003</note>
+        </trans-unit>
+        <trans-unit id="Page 984169427 - NamedType 732759939" size-unit="char" translate="yes" xml:space="preserve">
+          <source>The starting date is later than the ending date.</source>
+          <target>The starting date is later than the ending date.</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Service Target Settings - NamedType Text004</note>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

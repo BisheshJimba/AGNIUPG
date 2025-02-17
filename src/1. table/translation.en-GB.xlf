@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
+  <file datatype="xml" source-language="en-US" target-language="en-GB" original="Please update this value">
+    <body>
+      <group id="body">
+        <trans-unit id="Table 1846012685 - Field 3532796616 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Amount,Quantity,Percent</source>
+          <target>Amount,Quantity,Percent</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Service MTD Chart Setup - Field Value to Calculate - Property OptionCaption</note>
+        </trans-unit>
+        <trans-unit id="Table 3283813747 - Field 2708250016 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>User ID</source>
+          <target>User ID</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Res. Performance Chart Setup - Field User ID - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3283813747 - Field 1446865707 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Period Length</source>
+          <target>Period Length</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Res. Performance Chart Setup - Field Period Length - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3283813747 - Field 3174308747 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Use Work Date as Base</source>
+          <target>Use Work Date as Base</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Res. Performance Chart Setup - Field Use Work Date as Base - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3283813747 - Field 3532796616 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Value to Calculate</source>
+          <target>Value to Calculate</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Res. Performance Chart Setup - Field Value to Calculate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3283813747 - Field 3532796616 - Property 62802879" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Amount,Quantity</source>
+          <target>Amount,Quantity</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Res. Performance Chart Setup - Field Value to Calculate - Property OptionCaption</note>
+        </trans-unit>
+        <trans-unit id="Table 3283813747 - Field 2470986752 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Chart Type</source>
+          <target>Chart Type</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Res. Performance Chart Setup - Field Chart Type - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3283813747 - Field 3891454143 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Location</source>
+          <target>Location</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Res. Performance Chart Setup - Field Location - Property Caption</note>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

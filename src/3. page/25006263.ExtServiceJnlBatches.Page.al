@@ -1,0 +1,81 @@
+page 25006263 "Ext. Service Jnl. Batches"
+{
+    Caption = 'Ext. Service Jnl. Batches';
+    PageType = List;
+    SourceTable = Table25006144;
+
+    layout
+    {
+        area(content)
+        {
+            repeater()
+            {
+                field(Name; Name)
+                {
+                }
+                field(Description; Description)
+                {
+                }
+                field("No. Series"; "No. Series")
+                {
+                }
+                field("Posting No. Series"; "Posting No. Series")
+                {
+                }
+                field("Reason Code"; "Reason Code")
+                {
+                }
+            }
+        }
+    }
+
+    actions
+    {
+        area(navigation)
+        {
+            group("P&osting")
+            {
+                Caption = 'P&osting';
+                action("<Action1101901000>")
+                {
+                    Caption = 'Test Report';
+                    Image = TestReport;
+                    Promoted = true;
+                    PromotedCategory = Process;
+
+                    trigger OnAction()
+                    begin
+                        ReportPrint.PrintExtServJnlBatch(Rec);
+                    end;
+                }
+                action("P&ost")
+                {
+                    Caption = 'P&ost';
+                    Image = Post;
+                    Promoted = true;
+                    PromotedCategory = Process;
+                    RunObject = Codeunit 25006115;
+                    ShortCutKey = 'F11';
+                }
+                action("Post and &Print")
+                {
+                    Caption = 'Post and &Print';
+                    Image = PostPrint;
+                    Promoted = true;
+                    PromotedCategory = Process;
+                    RunObject = Codeunit 25006116;
+                    ShortCutKey = 'Shift+F11';
+                }
+            }
+        }
+    }
+
+    trigger OnNewRecord(BelowxRec: Boolean)
+    begin
+        SetupNewBatch;
+    end;
+
+    var
+        ReportPrint: Codeunit "228";
+}
+

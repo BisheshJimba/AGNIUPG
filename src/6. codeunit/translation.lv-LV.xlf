@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
+  <file datatype="xml" source-language="en-US" target-language="lv-LV" original="Please update this value">
+    <body>
+      <group id="body">
+        <trans-unit id="Codeunit 2890868556 - NamedType 34040586" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Save PDF file</source>
+          <target>Saglabât PDF failu</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Sign Management - NamedType SaveFileDialogTitleMsg</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2890868556 - NamedType 275499162" size-unit="char" translate="yes" xml:space="preserve">
+          <source>PDF Files (*.pdf)|*.pdf</source>
+          <target>PDF faili (*.pdf)|*.pdf</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Sign Management - NamedType SaveFileDialogFilterMsg</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 2890868556 - NamedType 2518826450" size-unit="char" translate="yes" xml:space="preserve">
+          <source>%1 %2 %3.pdf</source>
+          <target>Pârdo³anas %1 %2.pdf</target>
+          <note from="Developer" annotates="general" priority="2">, Comment='%1 = Document Type %2 = Invoice No.'</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit Sign Management - NamedType ReportAsPdfFileNameMsg</note>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

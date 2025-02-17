@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
+  <file datatype="xml" source-language="en-US" target-language="lv-LV" original="Please update this value">
+    <body>
+      <group id="body">
+        <trans-unit id="Page 2226863606 - Control 1024873738 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Preview</source>
+          <target>Pielikuma nosaukums</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Preview And Sign - Control Attachment Name - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1839945596 - Control 3605153064 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Start Date</source>
+          <target>Header From Date</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Service Schedule - Control StartDate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1839945596 - Control 845401037 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>End Date</source>
+          <target>Header To Date</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Service Schedule - Control EndDate - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1839945596 - Control 530928583 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Start Time</source>
+          <target>Header From Date</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Service Schedule - Control StartTime - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 1839945596 - Control 3837516702 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>End Time</source>
+          <target>Header To Date</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Service Schedule - Control EndTime - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3127620890 - Action 3183692218 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Link To Item</source>
+          <target>PiesaistÙt Precei</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension pageextension50313 - Action LinkToItem - Property Caption</note>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

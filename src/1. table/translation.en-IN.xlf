@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
+  <file datatype="xml" source-language="en-US" target-language="en-IN" original="Please update this value">
+    <body>
+      <group id="body">
+        <trans-unit id="Table 2860080435 - NamedType 672599587" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Do you want to overwrite existing Attachment ?</source>
+          <target>Do you want to overwrite existing template ?</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Vehicle Attachment - NamedType Txt001</note>
+        </trans-unit>
+        <trans-unit id="Table 2860080435 - NamedType 2585689438" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Import Attachment.</source>
+          <target>Import Template</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Vehicle Attachment - NamedType Txt002</note>
+        </trans-unit>
+        <trans-unit id="Table 2860080435 - NamedType 1947992821" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Update Attachment.</source>
+          <target>Export Template</target>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Vehicle Attachment - NamedType Txt003</note>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>
