@@ -4,8 +4,8 @@ tableextension 50102 tableextension50102 extends "Gen. Jnl. Allocation"
     {
         modify("Journal Line No.")
         {
-            TableRelation = "Gen. Journal Line"."Line No." WHERE(Journal Template Name=FIELD(Journal Template Name),
-                                                                  Journal Batch Name=FIELD(Journal Batch Name));
+            TableRelation = "Gen. Journal Line"."Line No." WHERE("Journal Template Name"=FIELD("Journal Template Name"),
+                                                                  "Journal Batch Name"=FIELD("Journal Batch Name"));
         }
         field(481; "Document Class"; Option)
         {
@@ -22,10 +22,10 @@ tableextension 50102 tableextension50102 extends "Gen. Jnl. Allocation"
         field(482; "Document Subclass"; Code[20])
         {
             Caption = 'Document Subclass';
-            TableRelation = IF (Document Class=CONST(Customer)) Customer
-                            ELSE IF (Document Class=CONST(Vendor)) Vendor
-                            ELSE IF (Document Class=CONST(Bank Account)) "Bank Account"
-                            ELSE IF (Document Class=CONST(Fixed Assets)) "Fixed Asset";
+            TableRelation = IF ("Document Class"=CONST(Customer)) Customer
+                            ELSE IF ("Document Class"=CONST(Vendor)) Vendor
+                            ELSE IF ("Document Class"=CONST("Bank Account")) "Bank Account"
+                            ELSE IF ("Document Class"=CONST("Fixed Assets")) "Fixed Asset";
         }
     }
 }

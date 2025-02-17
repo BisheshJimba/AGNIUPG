@@ -5,17 +5,17 @@ page 50010 "QR Batch Print Form"
     PromotedActionCategories = 'New,Process,Report,Print';
     SaveValues = false;
     ShowFilter = false;
-    SourceTable = "QR Specification";
+    SourceTable = Table33019974;
     SourceTableTemporary = true;
 
     layout
     {
         area(content)
         {
-            group(Control9)
+            group()
             {
                 Editable = true;
-                grid(Control10)
+                grid()
                 {
                     Editable = true;
                     GridLayout = Rows;
@@ -31,11 +31,11 @@ page 50010 "QR Batch Print Form"
 
                             trigger OnValidate()
                             begin
-                                Rec."Part No." := '';
+                                "Part No." := '';
                                 "Purchase Receipt No." := '';
                             end;
                         }
-                        field("Part No."; Rec."Part No.")
+                        field("Part No."; "Part No.")
                         {
                             Editable = true;
                             Lookup = true;
@@ -69,7 +69,7 @@ page 50010 "QR Batch Print Form"
             }
             repeater(Group)
             {
-                field("Item No."; Rec."Item No.")
+                field("Item No."; "Item No.")
                 {
                     Editable = false;
                 }
@@ -81,11 +81,11 @@ page 50010 "QR Batch Print Form"
                 {
                     Editable = false;
                 }
-                field("No. of Stickers"; Rec."No. of Stickers")
+                field("No. of Stickers"; "No. of Stickers")
                 {
                     Editable = false;
                 }
-                field("Per Sticker Qty"; Rec."Per Sticker Qty")
+                field("Per Sticker Qty"; "Per Sticker Qty")
                 {
                     Editable = false;
                 }
@@ -148,7 +148,7 @@ page 50010 "QR Batch Print Form"
 
                     trigger OnAction()
                     var
-                        QRPrint: Report 50074;
+                        QRPrint: Report "50074";
                     begin
                         CLEAR(QRPrint);
                         QRPrint.SetQRSpecification(Rec);
@@ -161,8 +161,8 @@ page 50010 "QR Batch Print Form"
     }
 
     var
-        QRSpecificationFilter: Record "QR Specification";
-        QRMgt: Codeunit "QR Mgt.";
+        QRSpecificationFilter: Record "33019974";
+        QRMgt: Codeunit "50006";
         NoOfPrints: Integer;
         PerStickerQty: Decimal;
         [InDataSet]
@@ -171,11 +171,11 @@ page 50010 "QR Batch Print Form"
 
     local procedure GetBatchPrintForm()
     var
-        QRSpecification: Record "QR Specification" temporary;
+        QRSpecification: Record "33019974" temporary;
     begin
-        QRMgt.GenerateBatchPrintDataset(Supplier, Rec."Part No.", "Purchase Receipt No.", Rec);
-        Rec.RESET;
-        IF Rec.FINDFIRST THEN;
+        QRMgt.GenerateBatchPrintDataset(Supplier, "Part No.", "Purchase Receipt No.", Rec);
+        RESET;
+        IF FINDFIRST THEN;
     end;
 }
 

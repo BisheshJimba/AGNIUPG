@@ -35,10 +35,10 @@ table 25006025 "Process Checklist Header"
         }
         field(50; VIN; Code[20])
         {
-            CalcFormula = Lookup(Vehicle.VIN WHERE(Serial No.=FIELD(Vehicle Serial No.)));
-                Caption = 'VIN';
-                Editable = false;
-                FieldClass = FlowField;
+            Caption = 'VIN';
+            Editable = false;
+            FieldClass = FlowField;
+            CalcFormula = Lookup(Vehicle.VIN WHERE("Serial No." = FIELD("Vehicle Serial No.")));
         }
         field(60; "Source Type"; Integer)
         {
@@ -61,7 +61,7 @@ table 25006025 "Process Checklist Header"
 
             trigger OnValidate()
             var
-                ChecklistLine: Record "25006028";
+                ChecklistLine: Record "Process Checklist Line";
             begin
                 TESTFIELD("No.");
 
@@ -106,7 +106,7 @@ table 25006025 "Process Checklist Header"
 
     trigger OnDelete()
     var
-        ProcessChecklistLine: Record "25006028";
+        ProcessChecklistLine: Record "Process Checklist Line";
     begin
         ProcessChecklistLine.RESET;
         ProcessChecklistLine.SETRANGE("Process Checklist No.", "No.");
@@ -115,7 +115,7 @@ table 25006025 "Process Checklist Header"
 
     trigger OnInsert()
     var
-        ProcessChecklistTemplate: Record "25006026";
+        ProcessChecklistTemplate: Record "Process Checklist Template";
     begin
         // Sipradi-YS BEGIN * Code to check Steps
         ServiceStepsChecking.CheckSteps("Source ID", Steps::CheckBay);
@@ -134,21 +134,21 @@ table 25006025 "Process Checklist Header"
     end;
 
     var
-        ProcessChecklistSetup: Record "25006009";
-        ProcessChecklistHdr: Record "25006025";
-        NoSeriesMgt: Codeunit "396";
-        ServiceStepsChecking: Codeunit "33020236";
+        ProcessChecklistSetup: Record "Process Checklist Setup";
+        ProcessChecklistHdr: Record "Process Checklist Header";
+        NoSeriesMgt: Codeunit 396;
+        ServiceStepsChecking: Codeunit "Service Steps Checking";
         Steps: Option CheckBay,CheckChecklist,CheckDiagnosis;
-        UserProfileSetup: Record "25006067";
-        UserSetup: Record "91";
-        Vehicle: Record "25006005";
+        UserProfileSetup: Record "User Profile Setup";
+        UserSetup: Record "User Setup";
+        Vehicle: Record Vehicle;
         Text051: Label 'Process checkilst %1 already exists.';
         Text010: Label 'You cannot change %1 while lines exist.';
 
     [Scope('Internal')]
-    procedure AssistEdit(OldProcessChecklistHdr: Record "25006025"): Boolean
+    procedure AssistEdit(OldProcessChecklistHdr: Record "Process Checklist Header"): Boolean
     var
-        ProcessChecklistHdr2: Record "25006025";
+        ProcessChecklistHdr2: Record "Process Checklist Header";
     begin
         ProcessChecklistHdr.COPY(Rec);
         ProcessChecklistSetup.GET;
@@ -177,9 +177,9 @@ table 25006025 "Process Checklist Header"
     [Scope('Internal')]
     procedure FillTemplateLines()
     var
-        ChecklistTemplateLine: Record "25006027";
+        ChecklistTemplateLine: Record "Proc. Checklist Template Line";
         LineNo: Integer;
-        ChecklistLine: Record "25006028";
+        ChecklistLine: Record "Process Checklist Line";
     begin
         LineNo := 0;
         ChecklistTemplateLine.RESET;

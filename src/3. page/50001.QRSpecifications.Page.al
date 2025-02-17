@@ -4,7 +4,7 @@ page 50001 "QR Specifications"
     LinksAllowed = false;
     PageType = Worksheet;
     ShowFilter = false;
-    SourceTable = "QR Specification";
+    SourceTable = Table33019974;
     SourceTableTemporary = true;
 
     layout
@@ -13,27 +13,27 @@ page 50001 "QR Specifications"
         {
             repeater(Group)
             {
-                field("Item No."; Rec."Item No.")
+                field("Item No."; "Item No.")
                 {
                 }
-                field("Supplier Code"; Rec."Supplier Code")
+                field("Supplier Code"; "Supplier Code")
                 {
                 }
-                field("No. of Stickers"; Rec."No. of Stickers")
-                {
-                    BlankZero = true;
-                }
-                field("Per Sticker Qty"; Rec."Per Sticker Qty")
+                field("No. of Stickers"; "No. of Stickers")
                 {
                     BlankZero = true;
                 }
-                field("Qty. Consumed"; Rec."Qty. Consumed")
+                field("Per Sticker Qty"; "Per Sticker Qty")
+                {
+                    BlankZero = true;
+                }
+                field("Qty. Consumed"; "Qty. Consumed")
                 {
                 }
             }
-            group(Control11)
+            group()
             {
-                fixed(Control10)
+                fixed()
                 {
                     group("Total Quantity")
                     {
@@ -82,7 +82,7 @@ page 50001 "QR Specifications"
 
                     trigger OnAction()
                     var
-                        QRMgt: Codeunit "QR Mgt.";
+                        QRMgt: Codeunit "50006";
                     begin
                         QRMgt.GenerateItemTrackingLines(Rec);
                         MESSAGE('Lot No. allocated.');
@@ -99,8 +99,8 @@ page 50001 "QR Specifications"
     end;
 
     var
-        TempQRSpecification: Record "QR Specification" temporary;
-        QRMgt: Codeunit "QR Mgt.";
+        TempQRSpecification: Record "33019974" temporary;
+        QRMgt: Codeunit "50006";
         SourceType: Integer;
         SourceSubType: Option;
         SourceID: Code[20];

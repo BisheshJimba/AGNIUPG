@@ -1,7 +1,7 @@
 page 50000 Suppliers
 {
     PageType = List;
-    SourceTable = Supplier;
+    SourceTable = Table33019973;
 
     layout
     {
@@ -9,13 +9,13 @@ page 50000 Suppliers
         {
             repeater(Group)
             {
-                field(Code; Rec.Code)
+                field(Code; Code)
                 {
                 }
-                field(Description; Rec.Description)
+                field(Description; Description)
                 {
                 }
-                field("Purchase Reference No. Series"; Rec."Purchase Reference No. Series")
+                field("Purchase Reference No. Series"; "Purchase Reference No. Series")
                 {
                 }
             }

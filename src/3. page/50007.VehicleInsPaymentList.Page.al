@@ -1,7 +1,7 @@
 page 50007 "Vehicle Ins. Payment List"
 {
     PageType = ListPart;
-    SourceTable = "Ins. Payment Memo Line";
+    SourceTable = Table33020170;
 
     layout
     {
@@ -9,10 +9,10 @@ page 50007 "Vehicle Ins. Payment List"
         {
             repeater(Group)
             {
-                field("Chasis No."; Rec."Chasis No.")
+                field("Chasis No."; "Chasis No.")
                 {
                 }
-                field("Engine No."; Rec."Engine No.")
+                field("Engine No."; "Engine No.")
                 {
                 }
                 field("DRP/ARE-1 No."; "DRP/ARE-1 No.")
@@ -21,13 +21,13 @@ page 50007 "Vehicle Ins. Payment List"
                 field(Model; Model)
                 {
                 }
-                field("Model Description"; Rec."Model Description")
+                field("Model Description"; "Model Description")
                 {
                 }
-                field("Model Version"; Rec."Model Version")
+                field("Model Version"; "Model Version")
                 {
                 }
-                field("Model Version Desc."; Rec."Model Version Desc.")
+                field("Model Version Desc."; "Model Version Desc.")
                 {
                 }
                 field(Amount; Amount)
@@ -105,11 +105,11 @@ page 50007 "Vehicle Ins. Payment List"
                 field(Type; Type)
                 {
                 }
-                field("Model Description2"; Rec."Model Description")
+                field("Model Description2"; "Model Description")
                 {
                     Caption = 'Model Description';
                 }
-                field("Model Version Desc.2"; Rec."Model Version Desc.")
+                field("Model Version Desc.2"; "Model Version Desc.")
                 {
                     Caption = 'Model Version Desc.';
                 }

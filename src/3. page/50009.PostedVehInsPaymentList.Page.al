@@ -6,8 +6,8 @@ page 50009 "Posted Veh. Ins. Payment List"
     InsertAllowed = false;
     ModifyAllowed = false;
     PageType = List;
-    SourceTable = 33020169;
-    SourceTableView = WHERE(Posted = FILTER(True));
+    SourceTable = Table33020169;
+    SourceTableView = WHERE(Posted = FILTER(Yes));
 
     layout
     {
@@ -15,35 +15,35 @@ page 50009 "Posted Veh. Ins. Payment List"
         {
             repeater(Group)
             {
-                field("No."; Rec."No.")
+                field("No."; "No.")
                 {
                 }
-                field("Insurance Company Code"; Rec."Insurance Company Code")
+                field("Insurance Company Code"; "Insurance Company Code")
                 {
                 }
-                field("Insurance Company Name"; Rec."Insurance Company Name")
+                field("Insurance Company Name"; "Insurance Company Name")
                 {
                 }
-                field(Description; Rec.Description)
+                field(Description; Description)
                 {
                 }
-                field("Posting Date"; Rec."Posting Date")
+                field("Posting Date"; "Posting Date")
                 {
                 }
-                field("Premium Amount"; Rec."Premium Amount")
+                field("Premium Amount"; "Premium Amount")
                 {
                 }
                 field("Premium Amount Inc. VAT"; "Premium Amount Inc. VAT")
                 {
                 }
-                field(OrderCreated; Rec.OrderCreated)
+                field(OrderCreated; OrderCreated)
                 {
                 }
             }
         }
         area(factboxes)
         {
-            systempart(Notes; Notes)
+            systempart(; Notes)
             {
             }
         }

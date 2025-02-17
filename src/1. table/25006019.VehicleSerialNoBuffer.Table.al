@@ -1,7 +1,7 @@
 table 25006019 "Vehicle Serial No. Buffer"
 {
     Caption = 'Vehicle Serial No. Buffer';
-    LookupPageID = 25006052;
+    LookupPageID = "Vehicle Serial No. Buffer";
 
     fields
     {
@@ -17,14 +17,14 @@ table 25006019 "Vehicle Serial No. Buffer"
         field(30; "Model Code"; Code[20])
         {
             Caption = 'Model Code';
-            TableRelation = Model.Code WHERE(Make Code=FIELD(Make Code));
+            TableRelation = Model.Code WHERE("Make Code" = FIELD("Make Code"));
         }
-        field(50;"Customer No.";Code[20])
+        field(50; "Customer No."; Code[20])
         {
             Caption = 'Customer No.';
             TableRelation = Customer;
         }
-        field(60;Description;Text[30])
+        field(60; Description; Text[30])
         {
             Caption = 'Description';
         }
@@ -32,7 +32,7 @@ table 25006019 "Vehicle Serial No. Buffer"
 
     keys
     {
-        key(Key1;"Serial No.")
+        key(Key1; "Serial No.")
         {
             Clustered = true;
         }
@@ -50,21 +50,20 @@ table 25006019 "Vehicle Serial No. Buffer"
     [Scope('Internal')]
     procedure fAssignSerialNo()
     var
-        cuNoSeriesMgt: Codeunit "396";
-        recPurchaseLine: Record "39";
+        cuNoSeriesMgt: Codeunit 396;
+        recPurchaseLine: Record "Purchase Line";
         codSerialNos: Code[20];
         codNewSerialNo: Code[20];
         tcDMS001: Label '%1 is already assigned.';
     begin
         IF "Serial No." <> '' THEN
-         ERROR(tcDMS001,FIELDCAPTION("Serial No."));
+            ERROR(tcDMS001, FIELDCAPTION("Serial No."));
 
         codSerialNos := 'AUTOSN';
-        cuNoSeriesMgt.InitSeries(codSerialNos,codSerialNos,WORKDATE,codNewSerialNo,codSerialNos);
-          IF codNewSerialNo <> '' THEN
-           BEGIN
-            VALIDATE("Serial No.",codNewSerialNo);
-           END;
+        cuNoSeriesMgt.InitSeries(codSerialNos, codSerialNos, WORKDATE, codNewSerialNo, codSerialNos);
+        IF codNewSerialNo <> '' THEN BEGIN
+            VALIDATE("Serial No.", codNewSerialNo);
+        END;
     end;
 }
 

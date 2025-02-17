@@ -1,4 +1,4 @@
-tableextension 50070 "G/L Entry" extends "G/L Entry"
+tableextension 50070 tableextension50070 extends "G/L Entry"
 {
     // 21.06.2007. EDMS P2
     //   * Added key G/L Account No.,Source Type,Source No.,Global Dimension 1 Code,Global Dimension 2 Code,Posting Date
@@ -165,7 +165,7 @@ tableextension 50070 "G/L Entry" extends "G/L Entry"
             Caption = 'LC No.';
             Editable = true;
             TableRelation = "LC Details"."No.";
-        }
+        } 
         field(33020012; "Bank LC No."; Code[20])
         {
             Editable = false;

@@ -1,4 +1,4 @@
-tableextension 50083 PermissionExt extends Permission
+tableextension 50083 tableextension50083 extends Permission
 {
     fields
     {

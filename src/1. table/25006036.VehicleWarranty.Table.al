@@ -34,7 +34,7 @@ table 25006036 "Vehicle Warranty"
 
             trigger OnValidate()
             var
-                VehicleWarrantyType: Record "25006035";
+                VehicleWarrantyType: Record "Vehicle Warranty Type";
             begin
                 IF VehicleWarrantyType.GET("Warranty Type Code") THEN BEGIN
                     "Term Date Formula" := VehicleWarrantyType."Term Date Formula";
@@ -46,10 +46,10 @@ table 25006036 "Vehicle Warranty"
         }
         field(40; VIN; Code[20])
         {
-            CalcFormula = Lookup(Vehicle.VIN WHERE(Serial No.=FIELD(Vehicle Serial No.)));
-                Caption = 'VIN';
-                Editable = false;
-                FieldClass = FlowField;
+            Caption = 'VIN';
+            Editable = false;
+            FieldClass = FlowField;
+            CalcFormula = Lookup(Vehicle.VIN WHERE("Serial No." = FIELD("Vehicle Serial No.")));
         }
         field(50; "Starting Date"; Date)
         {
@@ -113,8 +113,8 @@ table 25006036 "Vehicle Warranty"
 
             trigger OnLookup()
             var
-                VFOptions: Record "25006007";
-                Vehicle: Record "25006005";
+                VFOptions: Record "Variable Field Options";
+                Vehicle: Record Vehicle;
             begin
                 IF Vehicle.GET("Vehicle Serial No.") THEN;
                 VFOptions.RESET;
@@ -130,8 +130,8 @@ table 25006036 "Vehicle Warranty"
 
             trigger OnLookup()
             var
-                VFOptions: Record "25006007";
-                Vehicle: Record "25006005";
+                VFOptions: Record "Variable Field Options";
+                Vehicle: Record Vehicle;
             begin
                 IF Vehicle.GET("Vehicle Serial No.") THEN;
                 VFOptions.RESET;
@@ -147,8 +147,8 @@ table 25006036 "Vehicle Warranty"
 
             trigger OnLookup()
             var
-                VFOptions: Record "25006007";
-                Vehicle: Record "25006005";
+                VFOptions: Record "Variable Field Options";
+                Vehicle: Record Vehicle;
             begin
                 IF Vehicle.GET("Vehicle Serial No.") THEN;
                 VFOptions.RESET;
@@ -164,8 +164,8 @@ table 25006036 "Vehicle Warranty"
 
             trigger OnLookup()
             var
-                VFOptions: Record "25006007";
-                Vehicle: Record "25006005";
+                VFOptions: Record "Variable Field Options";
+                Vehicle: Record Vehicle;
             begin
                 IF Vehicle.GET("Vehicle Serial No.") THEN;
                 VFOptions.RESET;
@@ -181,8 +181,8 @@ table 25006036 "Vehicle Warranty"
 
             trigger OnLookup()
             var
-                VFOptions: Record "25006007";
-                Vehicle: Record "25006005";
+                VFOptions: Record "Variable Field Options";
+                Vehicle: Record Vehicle;
             begin
                 IF Vehicle.GET("Vehicle Serial No.") THEN;
                 VFOptions.RESET;
@@ -198,8 +198,8 @@ table 25006036 "Vehicle Warranty"
 
             trigger OnLookup()
             var
-                VFOptions: Record "25006007";
-                Vehicle: Record "25006005";
+                VFOptions: Record "Variable Field Options";
+                Vehicle: Record Vehicle;
             begin
                 IF Vehicle.GET("Vehicle Serial No.") THEN;
                 VFOptions.RESET;
@@ -215,8 +215,8 @@ table 25006036 "Vehicle Warranty"
 
             trigger OnLookup()
             var
-                VFOptions: Record "25006007";
-                Vehicle: Record "25006005";
+                VFOptions: Record "Variable Field Options";
+                Vehicle: Record Vehicle;
             begin
                 IF Vehicle.GET("Vehicle Serial No.") THEN;
                 VFOptions.RESET;
@@ -232,8 +232,8 @@ table 25006036 "Vehicle Warranty"
 
             trigger OnLookup()
             var
-                VFOptions: Record "25006007";
-                Vehicle: Record "25006005";
+                VFOptions: Record "Variable Field Options";
+                Vehicle: Record Vehicle;
             begin
                 IF Vehicle.GET("Vehicle Serial No.") THEN;
                 VFOptions.RESET;
@@ -249,8 +249,8 @@ table 25006036 "Vehicle Warranty"
 
             trigger OnLookup()
             var
-                VFOptions: Record "25006007";
-                Vehicle: Record "25006005";
+                VFOptions: Record "Variable Field Options";
+                Vehicle: Record Vehicle;
             begin
                 IF Vehicle.GET("Vehicle Serial No.") THEN;
                 VFOptions.RESET;
@@ -266,8 +266,8 @@ table 25006036 "Vehicle Warranty"
 
             trigger OnLookup()
             var
-                VFOptions: Record "25006007";
-                Vehicle: Record "25006005";
+                VFOptions: Record "Variable Field Options";
+                Vehicle: Record Vehicle;
             begin
                 IF Vehicle.GET("Vehicle Serial No.") THEN;
                 VFOptions.RESET;
@@ -282,7 +282,7 @@ table 25006036 "Vehicle Warranty"
         }
         field(33020236; Item; Code[20])
         {
-            TableRelation = IF (Spare Warranty=CONST(Yes)) Item WHERE (Item Type=CONST(Item));
+            TableRelation = IF ("Spare Warranty" = CONST(true)) Item WHERE("Item Type" = CONST(Item));
         }
     }
 
@@ -308,11 +308,11 @@ table 25006036 "Vehicle Warranty"
     end;
 
     var
-        VFMgt: Codeunit "25006004";
-        LookupMgt: Codeunit "25006003";
-        ServiceSetup: Record "25006120";
-        NoSeriesMgt: Codeunit "396";
-        VehWarranty: Record "25006036";
+        VFMgt: Codeunit 25006004;
+        LookupMgt: Codeunit 25006003;
+        ServiceSetup: Record "Service Mgt. Setup EDMS";
+        NoSeriesMgt: Codeunit 396;
+        VehWarranty: Record "Vehicle Warranty";
 
     [Scope('Internal')]
     procedure IsVFActive(intFieldNo: Integer): Boolean
@@ -322,7 +322,7 @@ table 25006036 "Vehicle Warranty"
     end;
 
     [Scope('Internal')]
-    procedure AssistEdit(OldWarranty: Record "25006036"): Boolean
+    procedure AssistEdit(OldWarranty: Record "Vehicle Warranty"): Boolean
     begin
         VehWarranty := Rec;
         ServiceSetup.GET;

@@ -2,7 +2,7 @@ page 50003 "General Gatepass List"
 {
     CardPageID = "General Gatepass";
     PageType = List;
-    SourceTable = "Gatepass Header";
+    SourceTable = Table50004;
 
     layout
     {
@@ -10,38 +10,38 @@ page 50003 "General Gatepass List"
         {
             repeater(Group)
             {
-                field("Document Type"; Rec."Document Type")
+                field("Document Type"; "Document Type")
                 {
                 }
-                field("Document No"; Rec."Document No")
+                field("Document No"; "Document No")
                 {
                 }
-                field(Location; Rec.Location)
+                field(Location; Location)
                 {
                 }
-                field("Issued Date"; Rec."Issued Date")
+                field("Issued Date"; "Issued Date")
                 {
                 }
-                field(Description; Rec.Description)
+                field(Description; Description)
                 {
                 }
-                field("Issued By"; Rec."Issued By")
+                field("Issued By"; "Issued By")
                 {
                 }
-                field(Type; Rec.Type)
+                field(Type; Type)
                 {
                 }
-                field("Responsibility Center"; Rec."Responsibility Center")
+                field("Responsibility Center"; "Responsibility Center")
                 {
                 }
-                field(Printed; Rec.Printed)
+                field(Printed; Printed)
                 {
                 }
             }
         }
         area(factboxes)
         {
-            systempart(Notes; Notes)
+            systempart(; Notes)
             {
             }
         }
@@ -62,11 +62,11 @@ page 50003 "General Gatepass List"
 
                 trigger OnAction()
                 var
-                    GatePass: Record "Gatepass Header";
-                    SalesInvHdr: Record "Sales Invoice Header";
+                    GatePass: Record "50004";
+                    SalesInvHdr: Record "112";
                 begin
                     SalesInvHdr.RESET;
-                    SalesInvHdr.SETRANGE("No.", Rec."External Document No.");
+                    SalesInvHdr.SETRANGE("No.", "External Document No.");
                     IF SalesInvHdr.FINDFIRST THEN
                         REPORT.RUNMODAL(3010750, TRUE, FALSE, SalesInvHdr)
                     ELSE BEGIN
@@ -81,8 +81,8 @@ page 50003 "General Gatepass List"
 
                 trigger OnAction()
                 var
-                    GatepassHdr: Record "Gatepass Header";
-                    GatepassHdr1: Record "Gatepass Header";
+                    GatepassHdr: Record "50004";
+                    GatepassHdr1: Record "50004";
                 begin
                     GatepassHdr.RESET;
                     IF GatepassHdr.FINDSET THEN
@@ -110,16 +110,16 @@ page 50003 "General Gatepass List"
     [Scope('Internal')]
     procedure FilterOnRecord()
     var
-        UserMgt: Codeunit "User Setup Management";
-        UserProfileSetup: Record "User Profile Setup";
-        UserSetup: Record "User Setup";
+        UserMgt: Codeunit "5700";
+        UserProfileSetup: Record "25006067";
+        UserSetup: Record "91";
     begin
-        Rec.FILTERGROUP(2);
+        FILTERGROUP(2);
         IF UserSetup.GET(USERID) THEN BEGIN
             IF UserSetup."Service Resp. Ctr. Filter EDMS" <> '' THEN
-                Rec.SETRANGE("Responsibility Center", UserSetup."Service Resp. Ctr. Filter EDMS");
+                SETRANGE("Responsibility Center", UserSetup."Service Resp. Ctr. Filter EDMS");
         END;
-        Rec.FILTERGROUP(0);
+        FILTERGROUP(0);
     end;
 }
 

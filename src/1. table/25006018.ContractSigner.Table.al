@@ -23,12 +23,12 @@ table 25006018 "Contract Signer"
         field(30; "Contact No."; Code[20])
         {
             Caption = 'Contact No.';
-            TableRelation = Contact.No.;
+            TableRelation = Contact."No.";
 
             trigger OnValidate()
             var
-                Cont: Record "5050";
-                ContBusinessRelation: Record "5054";
+                Cont: Record Contact;
+                ContBusinessRelation: Record "Contact Business Relation";
             begin
                 IF Cont.GET("Contact No.") THEN BEGIN
                     "Signer Name" := Cont.Name;

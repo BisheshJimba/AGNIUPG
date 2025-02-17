@@ -2,8 +2,8 @@ page 50008 "Veh. Ins. Payment Open List"
 {
     CardPageID = "Vehicle Insurance Payment Card";
     PageType = List;
-    SourceTable = "Ins. Payment Memo Header";
-    SourceTableView = WHERE(Posted = FILTER(false));
+    SourceTable = Table33020169;
+    SourceTableView = WHERE(Posted = FILTER(No));
 
     layout
     {
@@ -11,19 +11,19 @@ page 50008 "Veh. Ins. Payment Open List"
         {
             repeater(Group)
             {
-                field("No."; Rec."No.")
+                field("No."; "No.")
                 {
                 }
-                field(Description; Rec.Description)
+                field(Description; Description)
                 {
                 }
-                field("Insurance Company Code"; Rec."Insurance Company Code")
+                field("Insurance Company Code"; "Insurance Company Code")
                 {
                 }
-                field("Insurance Company Name"; Rec."Insurance Company Name")
+                field("Insurance Company Name"; "Insurance Company Name")
                 {
                 }
-                field("Premium Amount"; Rec."Premium Amount")
+                field("Premium Amount"; "Premium Amount")
                 {
                 }
                 field("Premium Amount Inc. VAT"; "Premium Amount Inc. VAT")
@@ -33,7 +33,7 @@ page 50008 "Veh. Ins. Payment Open List"
         }
         area(factboxes)
         {
-            systempart(Notes; Notes)
+            systempart(; Notes)
             {
             }
         }

@@ -2,7 +2,7 @@ page 50011 "QR Scan"
 {
     AutoSplitKey = true;
     PageType = Worksheet;
-    SourceTable = "QR Specification";
+    SourceTable = Table33019974;
     SourceTableTemporary = true;
 
     layout
@@ -57,13 +57,13 @@ page 50011 "QR Scan"
                                     BEGIN
                                         IF NOT QRMgt.PartsFromOldLot("QR Text") THEN BEGIN
                                             CurrentlyScanningItemNo := QRMgt.AssignLotNoToSalesLine(SalesHeader, "QR Text", Settings, "Qty. On Packet");
-                                            Rec.DELETEALL;
+                                            DELETEALL;
                                         END
                                         ELSE BEGIN
                                             IF SetDefaultQtyOne THEN BEGIN
                                                 "Qty. On Packet" := 1;
                                                 CurrentlyScanningItemNo := QRMgt.AssignLotNoToSalesLine(SalesHeader, "QR Text", Settings, "Qty. On Packet");
-                                                Rec.DELETEALL;
+                                                DELETEALL;
                                                 UpdateSubform;
                                             END;
                                         END;
@@ -72,19 +72,19 @@ page 50011 "QR Scan"
                                     BEGIN
                                         IF NOT QRMgt.PartsFromOldLot("QR Text") THEN BEGIN
                                             QRMgt.AssignLotNoToServiceLine(ServiceHeader, "QR Text", Settings, ServItemLineNo);
-                                            Rec.DELETEALL;
+                                            DELETEALL;
                                         END;
                                     END;
                                 DATABASE::"Transfer Header":
                                     BEGIN
                                         IF NOT QRMgt.PartsFromOldLot("QR Text") THEN BEGIN
                                             CurrentlyScanningItemNo := QRMgt.AssignLotNoToTransferLine(TransferHeader, "QR Text", Settings, "Qty. On Packet");
-                                            Rec.DELETEALL;
+                                            DELETEALL;
                                         END ELSE BEGIN
                                             IF SetDefaultQtyOne THEN BEGIN
                                                 "Qty. On Packet" := 1;
                                                 CurrentlyScanningItemNo := QRMgt.AssignLotNoToTransferLine(TransferHeader, "QR Text", Settings, "Qty. On Packet");
-                                                Rec.DELETEALL;
+                                                DELETEALL;
                                                 UpdateSubform;
                                             END;
                                         END;
@@ -117,8 +117,8 @@ page 50011 "QR Scan"
     end;
 
     var
-        QRMgt: Codeunit "QR Mgt.";
-        SalesHeader: Record 36;
+        QRMgt: Codeunit "50006";
+        SalesHeader: Record "36";
         ServiceHeader: Record "25006145";
         TransferHeader: Record "5740";
         AutoInsertItems: Boolean;

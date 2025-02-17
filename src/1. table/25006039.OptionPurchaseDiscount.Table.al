@@ -15,13 +15,13 @@ table 25006039 "Option Purchase Discount"
         {
             Caption = 'Option Code';
             NotBlank = true;
-            TableRelation = IF (Option Type=CONST(Manufacturer Option)) "Manufacturer Option"."Option Code" WHERE (Make Code=FIELD(Make Code),
-                                                                                                                   Model Code=FIELD(Model Code),
-                                                                                                                   Model Version No.=FIELD(Model Version No.))
-                                                                                                                   ELSE IF (Option Type=CONST(Own Option)) "Own Option"."Option Code" WHERE (Make Code=FIELD(Make Code),
-                                                                                                                                                                                             Model Code=FIELD(Model Code));
+            TableRelation = IF ("Option Type" = CONST("Manufacturer Option")) "Manufacturer Option"."Option Code" WHERE("Make Code" = FIELD("Make Code"),
+                                                                                                                   "Model Code" = FIELD("Model Code"),
+                                                                                                                   "Model Version No." = FIELD("Model Version No."))
+            ELSE IF ("Option Type" = CONST("Own Option")) "Own Option"."Option Code" WHERE("Make Code" = FIELD("Make Code"),
+                                                                                                                                                                                             "Model Code" = FIELD("Model Code"));
         }
-        field(20;"Vendor No.";Code[20])
+        field(20; "Vendor No."; Code[20])
         {
             Caption = 'Vendor No.';
             NotBlank = true;
@@ -30,27 +30,27 @@ table 25006039 "Option Purchase Discount"
             trigger OnValidate()
             begin
                 IF recVend.GET("Vendor No.") THEN
-                  "Currency Code" := recVend."Currency Code";
+                    "Currency Code" := recVend."Currency Code";
             end;
         }
-        field(30;"Starting Date";Date)
+        field(30; "Starting Date"; Date)
         {
             Caption = 'Starting Date';
 
             trigger OnValidate()
             begin
                 IF ("Starting Date" > "Ending Date") AND ("Ending Date" <> 0D) THEN
-                  ERROR(Text000,FIELDCAPTION("Starting Date"),FIELDCAPTION("Ending Date"));
+                    ERROR(Text000, FIELDCAPTION("Starting Date"), FIELDCAPTION("Ending Date"));
             end;
         }
-        field(40;"Line Discount %";Decimal)
+        field(40; "Line Discount %"; Decimal)
         {
             AutoFormatType = 2;
             Caption = 'Line Discount %';
             MaxValue = 100;
             MinValue = 0;
         }
-        field(60;"Ending Date";Date)
+        field(60; "Ending Date"; Date)
         {
             Caption = 'Ending Date';
 
@@ -59,7 +59,7 @@ table 25006039 "Option Purchase Discount"
                 VALIDATE("Starting Date");
             end;
         }
-        field(70;"Option Type";Option)
+        field(70; "Option Type"; Option)
         {
             Caption = 'Option Type';
             OptionCaption = 'Manufacturer Option,Own Option';
@@ -68,49 +68,49 @@ table 25006039 "Option Purchase Discount"
             trigger OnValidate()
             begin
                 IF xRec."Option Type" <> "Option Type" THEN
-                  VALIDATE("Option Code",'');
+                    VALIDATE("Option Code", '');
             end;
         }
-        field(75;"Option Subtype";Option)
+        field(75; "Option Subtype"; Option)
         {
             Caption = 'Option Subtype';
             OptionCaption = 'Option,Color,Upholstery';
             OptionMembers = Option,Color,Upholstery;
         }
-        field(80;"Make Code";Code[20])
+        field(80; "Make Code"; Code[20])
         {
             Caption = 'Make Code';
             TableRelation = Make;
         }
-        field(90;"Model Code";Code[20])
+        field(90; "Model Code"; Code[20])
         {
             Caption = 'Model Code';
-            TableRelation = Model.Code WHERE (Make Code=FIELD(Make Code));
+            TableRelation = Model.Code WHERE("Make Code" = FIELD("Make Code"));
         }
-        field(100;"Model Version No.";Code[20])
+        field(100; "Model Version No."; Code[20])
         {
             Caption = 'Model Version No.';
-            TableRelation = Item.No. WHERE (Item Type=CONST(Model Version),
-                                            Make Code=FIELD(Make Code),
-                                            Model Code=FIELD(Model Code));
+            TableRelation = Item."No." WHERE("Item Type" = CONST("Model Version"),
+                                            "Make Code" = FIELD("Make Code"),
+                                            "Model Code" = FIELD("Model Code"));
         }
-        field(110;"Currency Code";Code[10])
+        field(110; "Currency Code"; Code[10])
         {
             Caption = 'Currency Code';
             TableRelation = Currency;
         }
-        field(120;"Minimum Quantity";Decimal)
+        field(120; "Minimum Quantity"; Decimal)
         {
             Caption = 'Minimum Quantity';
-            DecimalPlaces = 0:5;
+            DecimalPlaces = 0 : 5;
             MinValue = 0;
         }
-        field(25006670;"Item Discount Group Code";Code[10])
+        field(25006670; "Item Discount Group Code"; Code[10])
         {
             Caption = 'Item Discount Group Code';
             TableRelation = "Item Discount Group";
         }
-        field(25006700;"Ordering Price Type Code";Code[10])
+        field(25006700; "Ordering Price Type Code"; Code[10])
         {
             Caption = 'Ordering Price Type Code';
             TableRelation = "Ordering Price Type";
@@ -119,7 +119,7 @@ table 25006039 "Option Purchase Discount"
 
     keys
     {
-        key(Key1;"Make Code","Model Code","Model Version No.","Option Type","Option Subtype","Option Code","Vendor No.","Starting Date")
+        key(Key1; "Make Code", "Model Code", "Model Version No.", "Option Type", "Option Subtype", "Option Code", "Vendor No.", "Starting Date")
         {
             Clustered = true;
         }
@@ -148,6 +148,6 @@ table 25006039 "Option Purchase Discount"
         Campaign: Record "5071";
         Text003: Label 'You can only change the %1 and %2 from the Campaign Card when %3 = %4';
         recVend: Record "23";
-        cuPurchPriceCalcMgt: Codeunit "7010";
+        cuPurchPriceCalcMgt: Codeunit 7010;
 }
 

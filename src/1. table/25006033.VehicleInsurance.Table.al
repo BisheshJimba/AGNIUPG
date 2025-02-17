@@ -1,7 +1,7 @@
 table 25006033 "Vehicle Insurance"
 {
     Caption = 'Vehicle Insurance';
-    LookupPageID = 25006053;
+    LookupPageID = "Vehicle Insurance";
 
     fields
     {
@@ -95,15 +95,15 @@ table 25006033 "Vehicle Insurance"
         }
         field(50006; "DRP/ARE-1 No."; Code[20])
         {
-            CalcFormula = Lookup(Vehicle."DRP No./ARE1 No." WHERE(Serial No.=FIELD(Vehicle Serial No.)));
-                Editable = false;
-                FieldClass = FlowField;
+            Editable = false;
+            FieldClass = FlowField;
+            CalcFormula = Lookup(Vehicle."DRP No./ARE1 No." WHERE("Serial No." = FIELD("Vehicle Serial No.")));
         }
         field(50007; "Model Version No."; Code[20])
         {
-            CalcFormula = Lookup(Vehicle."Model Version No." WHERE(Serial No.=FIELD(Vehicle Serial No.)));
-                Editable = false;
-                FieldClass = FlowField;
+            Editable = false;
+            FieldClass = FlowField;
+            CalcFormula = Lookup(Vehicle."Model Version No." WHERE("Serial No." = FIELD("Vehicle Serial No.")));
         }
         field(50008; "Proceed for Ins. Payment"; Boolean)
         {
@@ -111,9 +111,9 @@ table 25006033 "Vehicle Insurance"
         }
         field(50009; "Make Code"; Code[20])
         {
-            CalcFormula = Lookup(Vehicle."Make Code" WHERE(Serial No.=FIELD(Vehicle Serial No.)));
-                Editable = false;
-                FieldClass = FlowField;
+            Editable = false;
+            FieldClass = FlowField;
+            CalcFormula = Lookup(Vehicle."Make Code" WHERE("Serial No." = FIELD("Vehicle Serial No.")));
         }
         field(50010; "Reason for Cancellation"; Text[50])
         {
@@ -121,92 +121,92 @@ table 25006033 "Vehicle Insurance"
         }
         field(50011; "Insured Value"; Decimal)
         {
-            CalcFormula = Lookup("Ins. Memo Line".Amount WHERE(Chasis No.=FIELD(VIN)));
             FieldClass = FlowField;
+            CalcFormula = Lookup("Ins. Memo Line".Amount WHERE("Chasis No." = FIELD(VIN)));
         }
-        field(50012;"Insured by Customer";Boolean)
+        field(50012; "Insured by Customer"; Boolean)
         {
             Description = '//for vehicle finance department';
         }
-        field(50013;"Insured by Veh. Finance Dept.";Boolean)
+        field(50013; "Insured by Veh. Finance Dept."; Boolean)
         {
             Description = '//for vehicle finance department';
         }
-        field(50014;"Insurance Activity";Option)
+        field(50014; "Insurance Activity"; Option)
         {
             OptionCaption = 'New Policy,Body Addition,Value Addition,Renewal,Cancellation,Passenger';
             OptionMembers = "New Policy","Body Addition","Value Addition",Renewal,Cancellation,Passenger;
         }
-        field(33020042;"Ins. Company Code";Code[20])
+        field(33020042; "Ins. Company Code"; Code[20])
         {
             Editable = true;
             NotBlank = true;
-            TableRelation = Vendor.No.;
+            TableRelation = Vendor."No.";
 
             trigger OnValidate()
             begin
                 CALCFIELDS("Ins. Company Name");
             end;
         }
-        field(33020043;"Ins. Company Name";Text[50])
+        field(33020043; "Ins. Company Name"; Text[100])
         {
-            CalcFormula = Lookup(Vendor.Name WHERE (No.=FIELD(Ins. Company Code)));
             Editable = false;
             FieldClass = FlowField;
+            CalcFormula = Lookup(Vendor.Name WHERE("No." = FIELD("Ins. Company Code")));
         }
-        field(33020044;"Bill No.";Code[20])
+        field(33020044; "Bill No."; Code[20])
         {
         }
-        field(33020045;"Bill Date";Date)
+        field(33020045; "Bill Date"; Date)
         {
         }
-        field(33020046;"Customer Name";Text[50])
+        field(33020046; "Customer Name"; Text[50])
         {
-            CalcFormula = Lookup(Customer.Name WHERE (No.=FIELD(Customer Code)));
             Editable = false;
             FieldClass = FlowField;
+            CalcFormula = Lookup(Customer.Name WHERE("No." = FIELD("Customer Code")));
         }
-        field(33020047;"Ins. Prem Value (with VAT)";Decimal)
+        field(33020047; "Ins. Prem Value (with VAT)"; Decimal)
         {
             Editable = false;
         }
-        field(33020048;"Insurance Basic";Decimal)
+        field(33020048; "Insurance Basic"; Decimal)
         {
 
             trigger OnValidate()
             begin
-                "VAT(Insurance)":=("Insurance Basic"+"Other Insurance")*0.13;
-                "Ins. Prem Value (with VAT)":="VAT(Insurance)"+"Insurance Basic"+"Other Insurance"
+                "VAT(Insurance)" := ("Insurance Basic" + "Other Insurance") * 0.13;
+                "Ins. Prem Value (with VAT)" := "VAT(Insurance)" + "Insurance Basic" + "Other Insurance"
             end;
         }
-        field(33020049;"Other Insurance";Decimal)
+        field(33020049; "Other Insurance"; Decimal)
         {
 
             trigger OnValidate()
             begin
-                "VAT(Insurance)":=("Insurance Basic"+"Other Insurance")*0.13;
-                "Ins. Prem Value (with VAT)":="VAT(Insurance)"+"Insurance Basic"+"Other Insurance"
+                "VAT(Insurance)" := ("Insurance Basic" + "Other Insurance") * 0.13;
+                "Ins. Prem Value (with VAT)" := "VAT(Insurance)" + "Insurance Basic" + "Other Insurance"
             end;
         }
-        field(33020050;"VAT(Insurance)";Decimal)
+        field(33020050; "VAT(Insurance)"; Decimal)
         {
             Editable = false;
         }
-        field(33020051;"Proforma Invoice No";Code[20])
+        field(33020051; "Proforma Invoice No"; Code[20])
         {
         }
-        field(33020052;VIN;Code[20])
+        field(33020052; VIN; Code[20])
         {
-            CalcFormula = Lookup(Vehicle.VIN WHERE (Serial No.=FIELD(Vehicle Serial No.)));
             Editable = false;
             FieldClass = FlowField;
+            CalcFormula = Lookup(Vehicle.VIN WHERE("Serial No." = FIELD("Vehicle Serial No.")));
 
             trigger OnLookup()
             var
-                recVehicle: Record "25006005";
-                frmVehicleList: Page "25006033";
-                                    LookUpMgt: Codeunit "25006003";
-                                    recSalesRecSetup: Record "311";
+                recVehicle: Record Vehicle;
+                frmVehicleList: Page 25006033;
+                LookUpMgt: Codeunit 25006003;
+                recSalesRecSetup: Record "Sales & Receivables Setup";
             begin
                 /*
                 recVehicle.RESET;
@@ -226,46 +226,46 @@ table 25006033 "Vehicle Insurance"
 
             end;
         }
-        field(33020053;"Ins. Payment Memo No.";Code[20])
+        field(33020053; "Ins. Payment Memo No."; Code[20])
         {
-            CalcFormula = Max("Ins. Payment Memo Line".No. WHERE (Vehicle Serial No.=FIELD(Vehicle Serial No.),
-                                                                  Insurance Policy No.=FIELD(Insurance Policy No.),
-                                                                  Cancelled=CONST(No)));
             FieldClass = FlowField;
+            CalcFormula = Max("Ins. Payment Memo Line".No. WHERE("Vehicle Serial No." = FIELD("Vehicle Serial No."),
+                                                                  "Insurance Policy No." = FIELD("Insurance Policy No."),
+                                                                  Cancelled = CONST(false)));
         }
-        field(33020054;"Cancelled Adjustment Memo No.";Code[20])
+        field(33020054; "Cancelled Adjustment Memo No."; Code[20])
         {
-            CalcFormula = Max("Ins. Payment Memo Line".No. WHERE (Vehicle Serial No.=FIELD(Vehicle Serial No.),
-                                                                  Insurance Policy No.=FIELD(Insurance Policy No.),
-                                                                  Cancelled=CONST(Yes)));
             Editable = false;
             FieldClass = FlowField;
+            CalcFormula = Max("Ins. Payment Memo Line".No. WHERE("Vehicle Serial No." = FIELD("Vehicle Serial No."),
+                                                                  "Insurance Policy No." = FIELD("Insurance Policy No."),
+                                                                  Cancelled = CONST(true)));
         }
-        field(33020055;Expired;Boolean)
+        field(33020055; Expired; Boolean)
         {
         }
     }
 
     keys
     {
-        key(Key1;"Vehicle Serial No.","Line No.")
+        key(Key1; "Vehicle Serial No.", "Line No.")
         {
             Clustered = true;
         }
-        key(Key2;"Ending Date")
+        key(Key2; "Ending Date")
         {
         }
-        key(Key3;"Ins. Company Code")
+        key(Key3; "Ins. Company Code")
         {
         }
-        key(Key4;"Insurance Policy No.")
+        key(Key4; "Insurance Policy No.")
         {
         }
     }
 
     fieldgroups
     {
-        fieldgroup(DrillDown;"Insurance Policy No.",VIN,"Starting Date","Ending Date","Ins. Company Name")
+        fieldgroup(DrillDown; "Insurance Policy No.", VIN, "Starting Date", "Ending Date", "Ins. Company Name")
         {
         }
     }
@@ -273,44 +273,44 @@ table 25006033 "Vehicle Insurance"
     trigger OnDelete()
     begin
         IF Cancelled THEN
-          ERROR(Text001);
+            ERROR(Text001);
     end;
 
     trigger OnInsert()
     begin
         Vehicle.RESET;
-        Vehicle.SETRANGE("Serial No.","Vehicle Serial No.");
+        Vehicle.SETRANGE("Serial No.", "Vehicle Serial No.");
         IF Vehicle.FINDFIRST THEN BEGIN
-          "Make Code" := Vehicle."Make Code";
+            "Make Code" := Vehicle."Make Code";
         END;
     end;
 
     trigger OnModify()
     begin
         IF Cancelled THEN
-          ERROR(Text000);
+            ERROR(Text000);
     end;
 
     var
-        recInsucMemoHdr: Record "33020165";
-        recInsucMemoLine: Record "33020166";
-        recILE: Record "32";
-        Vehicle: Record "25006005";
+        recInsucMemoHdr: Record "Ins. Memo Header";
+        recInsucMemoLine: Record "Ins. Memo Line";
+        recILE: Record "Item Ledger Entry";
+        Vehicle: Record Vehicle;
         Text000: Label 'You cannot edit Cancelled Insurances.';
         Text001: Label 'You cannot delete Cancelled Insurances.';
 
     [Scope('Internal')]
     procedure DuplicatePolicyChcek()
     var
-        VehInsurance: Record "25006033";
+        VehInsurance: Record "Vehicle Insurance";
         DuplicateFound: Label 'Duplicate Insurance Policy Found in Vehicle %1.';
     begin
         VehInsurance.RESET;
         VehInsurance.SETCURRENTKEY("Insurance Policy No.");
-        VehInsurance.SETRANGE("Insurance Policy No.","Insurance Policy No.");
+        VehInsurance.SETRANGE("Insurance Policy No.", "Insurance Policy No.");
         IF VehInsurance.FINDFIRST THEN BEGIN
-          VehInsurance.CALCFIELDS(VIN);
-          ERROR(DuplicateFound,VehInsurance.VIN);
+            VehInsurance.CALCFIELDS(VIN);
+            ERROR(DuplicateFound, VehInsurance.VIN);
         END;
     end;
 }

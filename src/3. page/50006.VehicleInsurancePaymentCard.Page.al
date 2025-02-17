@@ -1,7 +1,7 @@
 page 50006 "Vehicle Insurance Payment Card"
 {
     PageType = Card;
-    SourceTable = "Ins. Payment Memo Header";
+    SourceTable = Table33020169;
 
     layout
     {
@@ -9,39 +9,39 @@ page 50006 "Vehicle Insurance Payment Card"
         {
             group(General)
             {
-                field("No."; Rec."No.")
+                field("No."; "No.")
                 {
 
                     trigger OnAssistEdit()
                     begin
-                        IF Rec.AssistEdit(xRec) THEN
+                        IF AssistEdit(xRec) THEN
                             CurrPage.UPDATE();
                     end;
                 }
-                field(Description; Rec.Description)
+                field(Description; Description)
                 {
                 }
-                field("Insurance Company Code"; Rec."Insurance Company Code")
+                field("Insurance Company Code"; "Insurance Company Code")
                 {
                 }
-                field("Insurance Company Name"; Rec."Insurance Company Name")
+                field("Insurance Company Name"; "Insurance Company Name")
                 {
                 }
-                field("ShortCut Dimension 1 Code"; Rec."ShortCut Dimension 1 Code")
+                field("ShortCut Dimension 1 Code"; "ShortCut Dimension 1 Code")
                 {
                 }
-                field("ShortCut Dimension 2 Code"; Rec."ShortCut Dimension 2 Code")
+                field("ShortCut Dimension 2 Code"; "ShortCut Dimension 2 Code")
                 {
                 }
             }
-            part("Vehicle Ins. Payment List"; "Vehicle Ins. Payment List")
+            part(; 50007)
             {
-                SubPageLink = "No." = FIELD("No.");
+                SubPageLink = No.=FIELD(No.);
             }
         }
         area(factboxes)
         {
-            systempart(Notes; Notes)
+            systempart(; Notes)
             {
             }
         }
@@ -66,11 +66,11 @@ page 50006 "Vehicle Insurance Payment Card"
 
                     trigger OnAction()
                     var
-                        InsHeader: Record "Ins. Payment Memo Header";
+                        InsHeader: Record "33020169";
                         Text000: Label 'Do you want to Post Insurance Payment Memo?';
                     begin
                         IF CONFIRM(Text000) THEN BEGIN
-                            IF NOT Rec.Posted THEN BEGIN
+                            IF NOT Posted THEN BEGIN
                                 UpdateVehicleInsurance(Rec);
                                 COMMIT;
                             END
@@ -91,7 +91,7 @@ page 50006 "Vehicle Insurance Payment Card"
 
                     trigger OnAction()
                     var
-                        InsHeader: Record "Ins. Payment Memo Header";
+                        InsHeader: Record "33020169";
                     begin
                         CurrPage.SETSELECTIONFILTER(InsHeader);
                         REPORT.RUNMODAL(50044, TRUE, FALSE, InsHeader);
@@ -127,7 +127,7 @@ page 50006 "Vehicle Insurance Payment Card"
                         //SM 2-06-2013
                         DefaultAccCenter := UserSetup."Default Accountability Center";
                         //..................................................
-                        InsPaymentMemoHeader.SETRANGE("No.", Rec."No.");
+                        InsPaymentMemoHeader.SETRANGE("No.", "No.");
                         IF InsPaymentMemoHeader.FINDFIRST THEN BEGIN
                             IF InsPaymentMemoHeader.OrderCreated = TRUE THEN BEGIN
                                 //MESSAGE(text002);
@@ -135,14 +135,14 @@ page 50006 "Vehicle Insurance Payment Card"
                                 EXIT;
                             END ELSE BEGIN
                                 InsPaymentMemoLine.RESET;
-                                InsPaymentMemoLine.SETRANGE("No.", Rec."No.");
+                                InsPaymentMemoLine.SETRANGE("No.", "No.");
                                 IF InsPaymentMemoLine.FINDFIRST THEN BEGIN
                                     REPEAT
                                         //to insert in purchase header
 
                                         CLEAR(PurchaseHeader);
                                         PurchaseHeader.INIT;
-                                        IF InsPaymentMemoLine.cancelled THEN
+                                        IF InsPaymentMemoLine.Cancelled THEN
                                             PurchaseHeader."Document Type" := PurchaseHeader."Document Type"::"Return Order"
                                         ELSE
                                             PurchaseHeader."Document Type" := PurchaseHeader."Document Type"::Order;
@@ -151,9 +151,9 @@ page 50006 "Vehicle Insurance Payment Card"
                                         PurchaseHeader."Posting Date" := TODAY;
                                         PurchaseHeader.INSERT(TRUE);
                                         PurchaseHeader."Order Date" := TODAY;
-                                        PurchaseHeader.VALIDATE("Buy-from Vendor No.", Rec."Insurance Company Code");
-                                        PurchaseHeader.VALIDATE("Shortcut Dimension 1 Code", Rec."ShortCut Dimension 1 Code");
-                                        PurchaseHeader.VALIDATE("Shortcut Dimension 2 Code", Rec."ShortCut Dimension 2 Code");
+                                        PurchaseHeader.VALIDATE("Buy-from Vendor No.", "Insurance Company Code");
+                                        PurchaseHeader.VALIDATE("Shortcut Dimension 1 Code", "ShortCut Dimension 1 Code");
+                                        PurchaseHeader.VALIDATE("Shortcut Dimension 2 Code", "ShortCut Dimension 2 Code");
                                         // PurchaseHeader.VALIDATE("Responsibility Center",VehicleModuleSetup."Reponsibility Center");
                                         PurchaseHeader.VALIDATE("Accountability Center", DefaultAccCenter);
                                         //PurchaseHeader.VALIDATE("Responsibility Center",DefaultRespCenter);
@@ -214,13 +214,13 @@ page 50006 "Vehicle Insurance Payment Card"
 
                     trigger OnAction()
                     var
-                        VehicleInsurance: Record "Vehicle Insurance";
-                        VehInsPaymentHeader: Record "Ins. Payment Memo Header";
-                        VehInsPaymentLine: Record "Ins. Payment Memo Line";
+                        VehicleInsurance: Record "25006033";
+                        VehInsPaymentHeader: Record "33020169";
+                        VehInsPaymentLine: Record "33020170";
                     begin
-                        Rec.TESTFIELD(OrderCreated, FALSE);
+                        TESTFIELD(OrderCreated, FALSE);
                         VehInsPaymentLine.RESET;
-                        VehInsPaymentLine.SETRANGE("No.", Rec."No.");
+                        VehInsPaymentLine.SETRANGE("No.", "No.");
                         IF VehInsPaymentLine.FINDSET THEN BEGIN
                             REPEAT
                                 VehicleInsurance.RESET;
@@ -232,9 +232,9 @@ page 50006 "Vehicle Insurance Payment Card"
                                     VehicleInsurance.MODIFY;
                                 END;
                             UNTIL VehInsPaymentLine.NEXT = 0;
-                            Rec.Posted := FALSE;
-                            Rec."Posting Date" := 0D;
-                            Rec.MODIFY;
+                            Posted := FALSE;
+                            "Posting Date" := 0D;
+                            MODIFY;
                             MESSAGE(Text004);
                         END;
                     end;
@@ -245,7 +245,7 @@ page 50006 "Vehicle Insurance Payment Card"
 
     trigger OnOpenPage()
     begin
-        IF Rec.Posted = TRUE THEN BEGIN
+        IF Posted = TRUE THEN BEGIN
             ShowPost := FALSE;
             ISPosted := TRUE;
         END ELSE BEGIN
@@ -256,20 +256,20 @@ page 50006 "Vehicle Insurance Payment Card"
 
     var
         Text000: Label 'Document has already been Posted.';
-        VehicleModuleSetup: Record "Vehicle Module Setup";
-        PurchaseHeader: Record "Purchase Header";
-        PurchaseLine: Record "Purchase Line";
-        InsPaymentMemoLine: Record "Ins. Payment Memo Line";
+        VehicleModuleSetup: Record "33020011";
+        PurchaseHeader: Record "38";
+        PurchaseLine: Record "39";
+        InsPaymentMemoLine: Record "33020170";
         Text001: Label 'Purchase Order of Ins. Payment Memo No. %1 created successfully!';
         ModuleCode: Code[20];
         [InDataSet]
         ISPosted: Boolean;
-        InsPaymentMemoHeader: Record "Ins. Payment Memo Header";
+        InsPaymentMemoHeader: Record "33020169";
         Text002: Label 'Purchase Order for Ins. Payment Memo No. %1  is already created!';
         [InDataSet]
         ShowPost: Boolean;
         Text003: Label 'This job will create Purchase Order for all Insurance lines. Are you sure to process with?';
-        UserSetup: Record "User Setup";
+        UserSetup: Record "91";
         DefaultLocation: Code[10];
         DefaultRespCenter: Code[20];
         Text004: Label 'Document is reversed successfully.';

@@ -1,8 +1,8 @@
 page 50002 "General Gatepass"
 {
     PageType = Card;
-    Permissions = TableData "Gatepass Line" = rm;
-    SourceTable = "Gatepass Header";
+    Permissions = TableData 50005 = rm;
+    SourceTable = Table50004;
 
     layout
     {
@@ -10,74 +10,74 @@ page 50002 "General Gatepass"
         {
             group(General)
             {
-                field("Document Profile"; Rec."Document Type")
+                field("Document Profile"; "Document Type")
                 {
                     Caption = 'Document Profile';
                 }
-                field("Document No"; Rec."Document No")
+                field("Document No"; "Document No")
                 {
                 }
-                field(Location; Rec.Location)
+                field(Location; Location)
                 {
                 }
-                field("Issued Date"; Rec."Issued Date")
+                field("Issued Date"; "Issued Date")
                 {
                 }
-                field("Issued Date (BS)"; Rec."Issued Date (BS)")
+                field("Issued Date (BS)"; "Issued Date (BS)")
                 {
                 }
-                field("Responsibility Center"; Rec."Responsibility Center")
+                field("Responsibility Center"; "Responsibility Center")
                 {
                     Visible = false;
                 }
-                field("Issued By"; Rec."Issued By")
+                field("Issued By"; "Issued By")
                 {
                 }
-                field(Type; Rec.Type)
+                field(Type; Type)
                 {
                 }
-                field("No. of Print"; Rec."No. of Print")
+                field("No. of Print"; "No. of Print")
                 {
                 }
-                field("Ship Address"; Rec."Ship Address")
+                field("Ship Address"; "Ship Address")
                 {
                 }
-                field(Kilometer; Rec.Kilometer)
+                field(Kilometer; Kilometer)
                 {
                 }
             }
             group(Details)
             {
-                field(Person; Rec.Person)
+                field(Person; Person)
                 {
                     Editable = true;
                 }
-                field(Destination; Rec.Destination)
+                field(Destination; Destination)
                 {
                 }
-                field(Owner; Rec.Owner)
+                field(Owner; Owner)
                 {
                     Editable = true;
                 }
-                field("Driver Name"; Rec."Driver Name")
+                field("Driver Name"; "Driver Name")
                 {
                 }
-                field("External Document Type"; Rec."External Document Type")
+                field("External Document Type"; "External Document Type")
                 {
                 }
-                field("External Document No."; Rec."External Document No.")
+                field("External Document No."; "External Document No.")
                 {
                 }
-                field("Vehicle Registration No."; Rec."Vehicle Registration No.")
+                field("Vehicle Registration No."; "Vehicle Registration No.")
                 {
                 }
-                field(VIN; Rec.VIN)
+                field(VIN; VIN)
                 {
                 }
-                field(Description; Rec.Description)
+                field(Description; Description)
                 {
                 }
-                field(Remarks; Rec.Remarks)
+                field(Remarks; Remarks)
                 {
                     MultiLine = true;
                 }
@@ -85,7 +85,7 @@ page 50002 "General Gatepass"
         }
         area(factboxes)
         {
-            systempart(Notes; Notes)
+            systempart(; Notes)
             {
             }
         }
@@ -105,19 +105,19 @@ page 50002 "General Gatepass"
 
                 trigger OnAction()
                 var
-                    GatePass: Record "Gatepass Header";
-                    SalesInvHdr: Record "Sales Invoice Header";
-                    ServiceOrdEDMS: Record "Service Header EDMS";
-                    GatepassLine: Record "Gatepass Line";
+                    GatePass: Record "50004";
+                    SalesInvHdr: Record "112";
+                    ServiceOrdEDMS: Record "25006145";
+                    GatepassLine: Record "50005";
                 begin
-                    IF (Rec."Document Type" = Rec."Document Type"::Admin) OR (Rec."External Document Type" = Rec."External Document Type"::"Closed Job") THEN BEGIN
+                    IF ("Document Type" = "Document Type"::Admin) OR ("External Document Type" = "External Document Type"::"Closed Job") THEN BEGIN
                         CurrPage.SETSELECTIONFILTER(GatePass);
                         REPORT.RUNMODAL(50027, TRUE, FALSE, GatePass);
                     END;
 
-                    IF (Rec."Document Type" = Rec."Document Type"::"Vehicle Service") AND (Rec."External Document Type" = Rec."External Document Type"::Repair) THEN BEGIN
+                    IF ("Document Type" = "Document Type"::"Vehicle Service") AND ("External Document Type" = "External Document Type"::Repair) THEN BEGIN
                         ServiceOrdEDMS.RESET;
-                        ServiceOrdEDMS.SETRANGE("No.", Rec."External Document No.");
+                        ServiceOrdEDMS.SETRANGE("No.", "External Document No.");
                         IF ServiceOrdEDMS.FINDFIRST THEN BEGIN
                             CurrPage.SETSELECTIONFILTER(GatePass);
                             REPORT.RUNMODAL(33020798, TRUE, FALSE, GatePass);
@@ -130,16 +130,16 @@ page 50002 "General Gatepass"
                                 UNTIL GatepassLine.NEXT = 0;
                         END
                     END;
-                    IF (Rec."Document Type" = Rec."Document Type"::"Vehicle Service") AND (Rec."External Document Type" = Rec."External Document Type"::"Trail/Demo") THEN BEGIN
+                    IF ("Document Type" = "Document Type"::"Vehicle Service") AND ("External Document Type" = "External Document Type"::"Trail/Demo") THEN BEGIN
                         CurrPage.SETSELECTIONFILTER(GatePass);
                         REPORT.RUNMODAL(50027, TRUE, FALSE, GatePass);
                     END;
 
-                    IF Rec."External Document Type" = Rec."External Document Type"::"Transfer Order" THEN BEGIN
+                    IF "External Document Type" = "External Document Type"::"Transfer Order" THEN BEGIN
                         CurrPage.SETSELECTIONFILTER(GatePass);
                         REPORT.RUNMODAL(33020799, TRUE, FALSE, GatePass);
                     END;
-                    IF Rec."External Document Type" = Rec."External Document Type"::PDI THEN BEGIN
+                    IF "External Document Type" = "External Document Type"::PDI THEN BEGIN
                         CurrPage.SETSELECTIONFILTER(GatePass);
                         REPORT.RUNMODAL(33020799, TRUE, FALSE, GatePass);
                     END;
@@ -151,24 +151,24 @@ page 50002 "General Gatepass"
                     // END;
 
                     SalesInvHdr.RESET;
-                    SalesInvHdr.SETRANGE("No.", Rec."External Document No.");
+                    SalesInvHdr.SETRANGE("No.", "External Document No.");
                     //Agni Incorporate UPG
                     IF SalesInvHdr.FINDFIRST THEN BEGIN
                         REPORT.RUNMODAL(3010750, TRUE, FALSE, SalesInvHdr);
                     END;
                     //Agni Incorporate UPG
-                    IF ((Rec."External Document Type" = Rec."External Document Type"::"General CheckUp") AND (Rec."External Document No." = '') OR
-                      (Rec."Document Type" = Rec."Document Type"::"Vehicle GatePass") AND (Rec."External Document Type" = Rec."External Document Type"::"General CheckUp") OR
-                      (Rec."Document Type" = Rec."Document Type"::"Vehicle GatePass") AND (Rec."External Document Type" = Rec."External Document Type"::"For Quotation") AND (Rec."External Document No." <> '')) THEN BEGIN
+                    IF (("External Document Type" = "External Document Type"::"General CheckUp") AND ("External Document No." = '') OR
+                      ("Document Type" = "Document Type"::"Vehicle GatePass") AND ("External Document Type" = "External Document Type"::"General CheckUp") OR
+                      ("Document Type" = "Document Type"::"Vehicle GatePass") AND ("External Document Type" = "External Document Type"::"For Quotation") AND ("External Document No." <> '')) THEN BEGIN
                         CurrPage.SETSELECTIONFILTER(GatePass);
                         REPORT.RUNMODAL(50027, TRUE, FALSE, GatePass);
                     END ELSE
                         IF ((SalesInvHdr.FINDFIRST) OR
-                 (Rec."Document Type" = Rec."Document Type"::"Vehicle GatePass") AND (Rec."External Document Type" = Rec."External Document Type"::"For Quotation") AND (Rec."External Document No." = '')) THEN BEGIN
+                 ("Document Type" = "Document Type"::"Vehicle GatePass") AND ("External Document Type" = "External Document Type"::"For Quotation") AND ("External Document No." = '')) THEN BEGIN
                             REPORT.RUNMODAL(3010750, TRUE, FALSE, SalesInvHdr);
                         END;
 
-                    IF (Rec."Document Type" = Rec."Document Type"::"Vehicle Trade") AND (Rec."External Document Type" = Rec."External Document Type"::"Vehicle Trial") THEN BEGIN
+                    IF ("Document Type" = "Document Type"::"Vehicle Trade") AND ("External Document Type" = "External Document Type"::"Vehicle Trial") THEN BEGIN
                         CurrPage.SETSELECTIONFILTER(GatePass);
                         REPORT.RUNMODAL(50027, TRUE, FALSE, GatePass);
                     END;
@@ -194,7 +194,7 @@ page 50002 "General Gatepass"
         VisibleVehicleTrade: Boolean;
         VisibleService: Boolean;
         VisibleSPTrade: Boolean;
-        GatePass: Page "General Gatepass";
+        GatePass: Page "50002";
         Update: Boolean;
         GatepassReport: Report "3010750";
 }

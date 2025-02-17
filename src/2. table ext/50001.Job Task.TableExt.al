@@ -1,4 +1,4 @@
-tableextension 50001 "Job Task" extends "Job Task"
+tableextension 50001 tableextension50001 extends "Job Task"
 {
     fields
     {

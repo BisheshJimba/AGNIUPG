@@ -15,12 +15,6 @@
   "platform": "1.0.0.0",
   "target": "OnPrem",
   "application": "25.0.0.0",
-  "idRanges": [
-    {
-      "from": 50000,
-      "to": 50149
-    }
-  ],
   "resourceExposurePolicy": {
     "allowDebugging": true,
     "allowDownloadingSource": true,

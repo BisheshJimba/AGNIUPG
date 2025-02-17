@@ -56,7 +56,7 @@ tableextension 50080 tableextension50080 extends Customer
 
             //Unsupported feature: Property Modification (Name) on ""Territory Code"(Field 15)".
 
-            TableRelation = Territory;
+            TableRelation = "Dealer Segment Type";
             Caption = 'Dealer Segment Type';
         }
 
@@ -842,53 +842,53 @@ tableextension 50080 tableextension50080 extends Customer
         }
         field(33019963; "Credit Limit Total"; Decimal)
         {
+            CalcFormula = Sum("Customer Credit Limit Detail"."Credit Limit (LCY)" WHERE(Customer No.=FIELD(No.),
+                                                                                         Global Dimension 1 Code=FIELD(Global Dimension 1 Filter),
+                                                                                         Global Dimension 2 Code=FIELD(Global Dimension 2 Filter)));
             FieldClass = FlowField;
-            CalcFormula = Sum("Customer Credit Limit Detail"."Credit Limit (LCY)" WHERE("Customer No." = FIELD("No."),
-                                                                                         "Global Dimension 1 Code" = FIELD("Global Dimension 1 Filter"),
-                                                                                         "Global Dimension 2 Code" = FIELD("Global Dimension 2 Filter")));
         }
-        field(33019964; "Father's Name"; Text[30])
+        field(33019964;"Father's Name";Text[30])
         {
         }
-        field(33019965; "Mother's Name"; Text[30])
+        field(33019965;"Mother's Name";Text[30])
         {
         }
-        field(33019966; "Date of Birth"; Date)
+        field(33019966;"Date of Birth";Date)
         {
         }
-        field(33019967; Gender; Text[30])
+        field(33019967;Gender;Text[30])
         {
-            TableRelation = "Catalogues Master" WHERE(Type = CONST(Gender));
+            TableRelation = "Catalogues Master" WHERE (Type=CONST(Gender));
         }
-        field(33019968; Class; Option)
+        field(33019968;Class;Option)
         {
             OptionCaption = ',ECD/PPC,Nursery,LKG,UKG,KG,1,2,3,4,5,6,7,8,9,10,11,12,JDFA,Left';
             OptionMembers = ,"ECD/PPC",Nursery,LKG,UKG,KG,"1","2","3","4","5","6","7","8","9","10","11","12",JDFA,Left;
         }
-        field(33019969; "Guardian's Name"; Text[30])
+        field(33019969;"Guardian's Name";Text[30])
         {
         }
-        field(33019970; Caste; Text[10])
+        field(33019970;Caste;Text[10])
         {
         }
-        field(33019971; "Bank Account Name"; Text[30])
+        field(33019971;"Bank Account Name";Text[30])
         {
         }
-        field(33019972; "Bank Account No."; Text[30])
+        field(33019972;"Bank Account No.";Text[30])
         {
         }
-        field(33019973; Section; Text[3])
+        field(33019973;Section;Text[3])
         {
         }
-        field(33019974; Saved; Boolean)
+        field(33019974;Saved;Boolean)
         {
         }
-        field(33019975; "Province No."; Option)
+        field(33019975;"Province No.";Option)
         {
             OptionCaption = ' ,PROVINCE 1, PROVINCE 2, BAGMATI PROVINCE, GANDAKI PROVINCE, PROVINCE 5, KARNALI PROVINCE, SUDUR PACHIM PROVINCE';
             OptionMembers = " ","PROVINCE 1"," PROVINCE 2"," BAGMATI PROVINCE"," GANDAKI PROVINCE"," PROVINCE 5"," KARNALI PROVINCE"," SUDUR PACHIM PROVINCE";
         }
-        field(33019976; "Nominee Account"; Code[20])
+        field(33019976;"Nominee Account";Code[20])
         {
             Description = 'For Hire Purchase Only';
 
@@ -898,15 +898,16 @@ tableextension 50080 tableextension50080 extends Customer
                 NomineeList.SETRECORD(Customer);
                 NomineeList.SETTABLEVIEW(Customer);
                 NomineeList.LOOKUPMODE(TRUE);
-                IF NomineeList.RUNMODAL = ACTION::LookupOK THEN BEGIN
-                    NomineeList.GETRECORD(Customer);
-                    VALIDATE("Nominee Account", Customer."Nominee Account");
+                IF NomineeList.RUNMODAL = ACTION::LookupOK THEN
+                BEGIN
+                  NomineeList.GETRECORD(Customer);
+                  VALIDATE("Nominee Account", Customer."Nominee Account");
                 END;
             end;
         }
-        field(33019977; "Balance at Date"; Decimal)
+        field(33019977;"Balance at Date";Decimal)
         {
-            CalcFormula = Sum("Detailed Cust. Ledg. Entry".Amount WHERE(Customer No.=FIELD(No.),
+            CalcFormula = Sum("Detailed Cust. Ledg. Entry".Amount WHERE (Customer No.=FIELD(No.),
                                                                          Initial Entry Global Dim. 1=FIELD(Global Dimension 1 Filter),
                                                                          Initial Entry Global Dim. 2=FIELD(Global Dimension 2 Filter),
                                                                          Currency Code=FIELD(Currency Filter),
@@ -1488,15 +1489,15 @@ tableextension 50080 tableextension50080 extends Customer
         CompanyRec: Record 2000000006;
         NoSeriesLine: Record 309;
         LastNoUsed: Code[10];
-        //AgniMgt: Codeunit 50000;
+        AgniMgt: Codeunit 50000;
         CustPostingGrp: Record 92;
         NoModifyPermissionErr: Label 'You do not have permission to modify customer card.';
         VFSetup: Record 33020064;
-        //NomineeList: Page 33020129;
-        Customer: Record 18;
-        HirePurchaseSetup: Record 33020064;
-        CompanyInfo: Record 79;
-        Text016: Label 'Mobile No. cannot be more than 20 digits.';
+        NomineeList: Page 33020129;
+                         Customer: Record 18;
+                         HirePurchaseSetup: Record 33020064;
+                         CompanyInfo: Record 79;
+                         Text016: Label 'Mobile No. cannot be more than 20 digits.';
         Text017: Label 'Phone No. cannot be more than 20 digits.';
 }
 

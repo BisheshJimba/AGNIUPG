@@ -21,7 +21,7 @@ table 25006027 "Proc. Checklist Template Line"
         }
         field(40; Description; Text[30])
         {
-            CalcFormula = Lookup("Variable Field".Caption WHERE(Code = FIELD(Type Code)));
+            CalcFormula = Lookup("Variable Field".Caption WHERE(Code = FIELD("Type Code")));
             Caption = 'Description';
             Editable = false;
             FieldClass = FlowField;

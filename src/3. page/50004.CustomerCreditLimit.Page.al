@@ -2,7 +2,7 @@ page 50004 "Customer Credit Limit"
 {
     DelayedInsert = true;
     PageType = List;
-    SourceTable = "Customer Credit Limit Detail";
+    SourceTable = Table50007;
 
     layout
     {
@@ -10,39 +10,39 @@ page 50004 "Customer Credit Limit"
         {
             repeater(Group)
             {
-                field("Customer No."; Rec."Customer No.")
+                field("Customer No."; "Customer No.")
                 {
                 }
-                field("Customer Name"; Rec."Customer Name")
+                field("Customer Name"; "Customer Name")
                 {
                 }
-                field("Global Dimension 1 Code"; Rec."Global Dimension 1 Code")
+                field("Global Dimension 1 Code"; "Global Dimension 1 Code")
                 {
                 }
-                field("Global Dimension 2 Code"; Rec."Global Dimension 2 Code")
+                field("Global Dimension 2 Code"; "Global Dimension 2 Code")
                 {
                     Style = StandardAccent;
                     StyleExpr = TRUE;
                 }
-                field("Accountability Center"; Rec."Accountability Center")
+                field("Accountability Center"; "Accountability Center")
                 {
                 }
-                field("Credit Limit (LCY)"; Rec."Credit Limit (LCY)")
+                field("Credit Limit (LCY)"; "Credit Limit (LCY)")
                 {
                 }
-                field(Reason; Rec.Reason)
+                field(Reason; Reason)
                 {
                 }
-                field("Last Modified By"; Rec."Last Modified By")
+                field("Last Modified By"; "Last Modified By")
                 {
                 }
-                field("Last Modified Date"; Rec."Last Modified Date")
+                field("Last Modified Date"; "Last Modified Date")
                 {
                 }
-                field("Created By"; Rec."Created By")
+                field("Created By"; "Created By")
                 {
                 }
-                field("Created Date"; Rec."Created Date")
+                field("Created Date"; "Created Date")
                 {
                 }
             }
