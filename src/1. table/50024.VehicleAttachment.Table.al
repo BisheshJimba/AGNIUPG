@@ -65,7 +65,6 @@ table 50024 "Vehicle Attachment"
         VAttachment: Record "Vehicle Attachment";
         AttNo: Integer;
 
-    [Scope('Internal')]
     procedure ImportAttachment(SerialNo: Code[20]; DocType: Integer)
     var
         AttachRecordRef: RecordRef;
@@ -100,7 +99,6 @@ table 50024 "Vehicle Attachment"
             MESSAGE(Txt005, FileName);
     end;
 
-    [Scope('Internal')]
     procedure ExportAttachment(SerialNo: Code[20]; AttNo: Integer)
     var
         FileName: Text[1024];
@@ -121,7 +119,6 @@ table 50024 "Vehicle Attachment"
         FileMgmt.BLOBExport(TempBlob, FORMAT("File Name" + ''), TRUE);
     end;
 
-    [Scope('Internal')]
     procedure UpdateAttachment(SerialNo: Code[20]; AttNo: Integer)
     begin
         SETRANGE("Serial No", SerialNo);
@@ -145,7 +142,6 @@ table 50024 "Vehicle Attachment"
             MESSAGE(Txt005, FileName);
     end;
 
-    [Scope('Internal')]
     procedure DeleteAttachment(SerialNo: Code[20]; AttNo: Integer)
     begin
         SETRANGE("Serial No", SerialNo);

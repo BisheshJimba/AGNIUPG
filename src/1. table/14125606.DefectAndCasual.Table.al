@@ -368,7 +368,6 @@ table 14125606 "Defect And Casual"
 
     end;
 
-    [Scope('Internal')]
     procedure getCurrentServiceLine(ServNo: Code[20])
     var
         ServLine: Record "Service Line EDMS";

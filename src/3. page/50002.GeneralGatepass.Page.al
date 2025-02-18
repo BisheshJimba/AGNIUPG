@@ -2,7 +2,7 @@ page 50002 "General Gatepass"
 {
     PageType = Card;
     Permissions = TableData 50005 = rm;
-    SourceTable = Table50004;
+    SourceTable = "Gatepass Header";
 
     layout
     {

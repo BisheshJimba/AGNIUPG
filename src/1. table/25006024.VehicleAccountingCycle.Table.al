@@ -52,7 +52,7 @@ table 25006024 "Vehicle Accounting Cycle"
                                                                        "Vehicle Serial No." = FIELD("Vehicle Serial No."),
                                                                        "Vehicle Accounting Cycle No." = FIELD("No.")));
         }
-        field(33020237; "Customer No"; Code[10])
+        field(33020237; "Customer No"; Code[20])
         {
             FieldClass = FlowField;
             CalcFormula = Lookup("Sales Line"."Sell-to Customer No." WHERE("Document Type" = CONST(Order),

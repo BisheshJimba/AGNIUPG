@@ -5,7 +5,6 @@ codeunit 60000 "Manpower Budget Mangement"
     begin
     end;
 
-    [Scope('Internal')]
     procedure CreateBudgetLines(PrmFiscalYear: Code[10])
     var
         LclDepartment: Record "33020337";

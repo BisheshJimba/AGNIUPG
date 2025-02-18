@@ -699,22 +699,18 @@ table 50019 "Employee-2"
         ExamDepartment: Record "Exam Department";
         DimensionValue: Record "Dimension Value";
 
-    [Scope('Internal')]
     procedure AssistEdit(OldEmployee: Record Employee): Boolean
     begin
     end;
 
-    [Scope('Internal')]
     procedure FullName(): Text[100]
     begin
     end;
 
-    [Scope('Internal')]
     procedure ValidateShortcutDimCode(FieldNumber: Integer; var ShortcutDimCode: Code[20])
     begin
     end;
 
-    [Scope('Internal')]
     procedure DisplayMap()
     var
         MapPoint: Record "Online Map Setup";
@@ -722,7 +718,6 @@ table 50019 "Employee-2"
     begin
     end;
 
-    [Scope('Internal')]
     procedure InsertSalaryLog()
     var
         SalaryLog: Record "Salary Log";
@@ -732,14 +727,12 @@ table 50019 "Employee-2"
     begin
     end;
 
-    [Scope('Internal')]
     procedure CreateDimension()
     var
         DimValue: Record "Dimension Value";
     begin
     end;
 
-    [Scope('Internal')]
     procedure SyncDimension(DimensionCode: Code[20]; "Code": Code[20]; Name: Code[50])
     var
         RecDimValue: Record "Dimension Value";

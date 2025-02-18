@@ -150,7 +150,6 @@ table 14125601 "Entry Lines Temp"
         DimMgt: Codeunit DimensionManagement;
         CalledFromTemporaryUpdate: Boolean;
 
-    [Scope('Internal')]
     procedure UpdateDimension(var TempTable: Record "Entry Lines Temp")
     var
         LogTable: Record "SMS Setup 1";
@@ -161,13 +160,11 @@ table 14125601 "Entry Lines Temp"
     begin
     end;
 
-    [Scope('Internal')]
     procedure SetCalledFromTemporaryUpdate(_CalledFromTemporaryUpdate: Boolean)
     begin
         CalledFromTemporaryUpdate := _CalledFromTemporaryUpdate;  //SRT Nov 8th 2019
     end;
 
-    [Scope('Internal')]
     procedure ValidateShortcutDimCode(FieldNumber: Integer; var ShortcutDimCode: Code[20])
     begin
         DimMgt.ValidateShortcutDimValues(FieldNumber, ShortcutDimCode, "New Dimension Set ID");

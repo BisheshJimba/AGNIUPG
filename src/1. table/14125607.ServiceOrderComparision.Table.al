@@ -91,7 +91,6 @@ table 14125607 "Service Order Comparision"
     {
     }
 
-    [Scope('Internal')]
     procedure getCurrentServiceLine(ServNo: Code[20])
     var
         ServLine: Record "Service Line EDMS";
@@ -199,7 +198,6 @@ table 14125607 "Service Order Comparision"
 
     end;
 
-    [Scope('Internal')]
     procedure createDirectory(oldPath: Text; NewDir: Text; var AttrDir: Text)
     var
         Directory: Text;
@@ -219,7 +217,6 @@ table 14125607 "Service Order Comparision"
         AttrDir := Directory;
     end;
 
-    [Scope('Internal')]
     procedure downloadAttchment(IncEntry: Integer): Boolean
     var
         tempFile: Text;
@@ -233,7 +230,6 @@ table 14125607 "Service Order Comparision"
         END;
     end;
 
-    [Scope('Internal')]
     procedure deleteAttachment(IncENt: Integer): Boolean
     var
         IncommingDoc: Record "Incoming Document";

@@ -1417,7 +1417,6 @@ table 25006005 Vehicle
         GblSTPLSysMngt: Codeunit 50000;
         Text1001: Label 'Vehicle Serial No. already exist in Item Ledger Entry. %1 has to be match with the same in Item Ledger Entry';
 
-    [Scope('Internal')]
     procedure AssignSerialNo()
     var
         cuNoSeriesMgt: Codeunit 396;
@@ -1437,14 +1436,12 @@ table 25006005 Vehicle
         VALIDATE("Serial No.",codNewSerialNo);
     end;
 
-    [Scope('Internal')]
     procedure IsVFActive(FieldNo: Integer): Boolean
     begin
         CLEAR(VFMgt);
         EXIT(VFMgt.IsVFActive(DATABASE::Vehicle,FieldNo));
     end;
 
-    [Scope('Internal')]
     procedure CheckDublicates()
     var
         recVehicle: Record 25006005;
@@ -1458,7 +1455,6 @@ table 25006005 Vehicle
          ERROR(tcDMS001,VIN);
     end;
 
-    [Scope('Internal')]
     procedure NewAccCycleNo()
     var
         CycleNo: Code[20];
@@ -1488,7 +1484,6 @@ table 25006005 Vehicle
         END;
     end;
 
-    [Scope('Internal')]
     procedure GetAssemblyDescr(var SerialNo: Code[20]) Res: Text[1024]
     var
         VehAssembly: Record "25006380";
@@ -1529,7 +1524,6 @@ table 25006005 Vehicle
         END
     end;
 
-    [Scope('Internal')]
     procedure GetLocation() LocationCode: Code[10]
     var
         ItemLedgerEntry: Record "32";
@@ -1542,7 +1536,6 @@ table 25006005 Vehicle
         EXIT(LocationCode);
     end;
 
-    [Scope('Internal')]
     procedure GetCurrentPrice() CurrPrice: Decimal
     var
         SalesPrice: Record "7002";
@@ -1567,7 +1560,6 @@ table 25006005 Vehicle
         END;
     end;
 
-    [Scope('Internal')]
     procedure ShowVehReservationEntries(Modal: Boolean)
     var
         VehReservEngineMgt: Codeunit 25006316;
@@ -1582,7 +1574,6 @@ table 25006005 Vehicle
           PAGE.RUN(PAGE::"Vehicle Reservation Entries",VehReservEntry);
     end;
 
-    [Scope('Internal')]
     procedure CreateInteraction()
     var
         SegmentLine: Record 5077 temporary;
@@ -1592,7 +1583,6 @@ table 25006005 Vehicle
         SegmentLine.CreateInteractionFromVehicle(Rec);
     end;
 
-    [Scope('Internal')]
     procedure ShowSalesOrders()
     var
         SalesHeader: Record 36;
@@ -1621,7 +1611,6 @@ table 25006005 Vehicle
         END;
     end;
 
-    [Scope('Internal')]
     procedure ShowSalesReturnOrders()
     var
         SalesHeader: Record 36;
@@ -1650,7 +1639,6 @@ table 25006005 Vehicle
         END;
     end;
 
-    [Scope('Internal')]
     procedure ShowPurchOrders()
     var
         PurchHeader: Record 38;
@@ -1679,7 +1667,6 @@ table 25006005 Vehicle
         END;
     end;
 
-    [Scope('Internal')]
     procedure ShowPurchReturnOrders()
     var
         PurchHeader: Record 38;
@@ -1708,7 +1695,6 @@ table 25006005 Vehicle
         END;
     end;
 
-    [Scope('Internal')]
     procedure ShowServOrders()
     var
         ServiceHeader: Record 25006145;
@@ -1725,7 +1711,6 @@ table 25006005 Vehicle
         END;
     end;
 
-    [Scope('Internal')]
     procedure ShowServReturnOrders()
     var
         ServiceHeader: Record 25006145;
@@ -1742,7 +1727,6 @@ table 25006005 Vehicle
         END;
     end;
 
-    [Scope('Internal')]
     procedure FillVariableFieldsFromSpecific()
     var
         VariableFieldUsage: Record 25006006;
@@ -1776,13 +1760,11 @@ table 25006005 Vehicle
         RecordRef2.SETTABLE(Rec);
     end;
 
-    [Scope('Internal')]
     procedure GetCaptionClass(FldNo: Integer): Text[80]
     begin
         EXIT('7,25006005,'+FORMAT(FldNo));
     end;
 
-    [Scope('Internal')]
     procedure TestNoOpenEntriesExist(CurrentFieldName: Text[100])
     var
         ItemLedgEntry: Record 32;
@@ -1799,7 +1781,6 @@ table 25006005 Vehicle
             CurrentFieldName);
     end;
 
-    [Scope('Internal')]
     procedure CreateContactSheet()
     begin
         IF "Sales Date" <> 0D THEN BEGIN

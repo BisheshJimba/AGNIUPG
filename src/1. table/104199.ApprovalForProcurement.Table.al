@@ -48,6 +48,6 @@ table 104199 "Approval For Procurement"
     }
 
     var
-        UserMgt: Codeunit "418";
+        UserMgt: Codeunit 418;
 }
 

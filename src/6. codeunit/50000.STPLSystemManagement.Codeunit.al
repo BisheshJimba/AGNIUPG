@@ -26,7 +26,7 @@ codeunit 50000 "STPL System Management"
         ChangeCompanyRecord: Boolean;
         NewCompanyName: Text[30];
 
-    [Scope('Internal')]
+    [Scope('OnPrem')]
     procedure createNepaliCalender()
     var
         EngNepCalender3: Record "33020302";
@@ -34,7 +34,7 @@ codeunit 50000 "STPL System Management"
         //Creates Nepali Calender.
     end;
 
-    [Scope('Internal')]
+    [Scope('OnPrem')]
     procedure getNepaliDate(PrmEngDate: Date): Code[10]
     var
         LocalEngNepCalender: Record "33020302";
@@ -46,7 +46,7 @@ codeunit 50000 "STPL System Management"
             EXIT(LocalEngNepCalender."Nepali Date");
     end;
 
-    [Scope('Internal')]
+    [Scope('OnPrem')]
     procedure getEngDate(PrmNepDate: Code[20]): Date
     var
         LocalEngNepCalender2: Record "33020302";
@@ -58,7 +58,7 @@ codeunit 50000 "STPL System Management"
             EXIT(LocalEngNepCalender2."English Date");
     end;
 
-    [Scope('Internal')]
+    [Scope('OnPrem')]
     procedure GetEnglishFiscalYear(PostingDate: Date): Text[30]
     var
         AccountingPeriod: Record "50";
@@ -71,7 +71,7 @@ codeunit 50000 "STPL System Management"
         END;
     end;
 
-    [Scope('Internal')]
+    [Scope('OnPrem')]
     procedure getCurrentFiscalYear(EngDate: Date): Code[10]
     var
         EnglishNepaliDate: Record "33020302";
@@ -82,7 +82,7 @@ codeunit 50000 "STPL System Management"
             EXIT(EnglishNepaliDate."Fiscal Year");
     end;
 
-    [Scope('Internal')]
+    [Scope('OnPrem')]
     procedure getCurrentMonth(EngDate: Date): Integer
     var
         EnglishNepaliDate: Record "33020302";
@@ -93,12 +93,12 @@ codeunit 50000 "STPL System Management"
             EXIT(EnglishNepaliDate."Nepali Month");
     end;
 
-    [Scope('Internal')]
+    [Scope('OnPrem')]
     procedure getVoucherFileNo(PrmFileStore: Integer)
     begin
     end;
 
-    [Scope('Internal')]
+    [Scope('OnPrem')]
     procedure getProcVarFieldName(TableNo: Integer; FieldNo: Integer): Code[50]
     var
         RetValue: Text[50];
@@ -112,7 +112,7 @@ codeunit 50000 "STPL System Management"
 
     end;
 
-    [Scope('Internal')]
+    [Scope('OnPrem')]
     procedure getVariableField(TableNo: Integer; FieldNo: Integer): Text[80]
     var
         VarFieldSetup: Record "33020335";
@@ -125,7 +125,7 @@ codeunit 50000 "STPL System Management"
             EXIT(VarFieldSetup."Field Name");
     end;
 
-    [Scope('Internal')]
+    [Scope('OnPrem')]
     procedure getLocWiseNoSeries("Document Profile": Option Purchase,Sales,Service,Transfer; "Document Type": Option Quote,"Blanket Order","Order","Return Order",Invoice,"Posted Invoice","Credit Memo","Posted Credit Memo","Posted Shipment","Posted Receipt","Posted Prepmt. Inv.","Posted Prepmt. Cr. Memo","Posted Return Receipt","Posted Return Shipment",Booking,"Posted Order","Posted Debit Note"): Code[10]
     var
         Location: Record "14";
@@ -341,7 +341,7 @@ codeunit 50000 "STPL System Management"
         END;
     end;
 
-    [Scope('Internal')]
+    [Scope('OnPrem')]
     procedure changeUserProfile()
     var
         UserSetup: Record "91";
@@ -350,7 +350,7 @@ codeunit 50000 "STPL System Management"
     begin
     end;
 
-    [Scope('Internal')]
+    [Scope('OnPrem')]
     procedure getCustCompNo(): Code[10]
     var
         Location: Record "14";
@@ -363,7 +363,7 @@ codeunit 50000 "STPL System Management"
             EXIT(AccountabilityCenter."Customer Complain Nos.");
     end;
 
-    [Scope('Internal')]
+    [Scope('OnPrem')]
     procedure SyncMasterData(TableID: Integer; PrimaryKey: Code[20]; NoSeries: Code[10])
     var
         Customer: Record "18";
@@ -390,7 +390,7 @@ codeunit 50000 "STPL System Management"
             UNTIL CompanyRec.NEXT = 0;
     end;
 
-    [Scope('Internal')]
+    [Scope('OnPrem')]
     procedure GetVFCaption(TableNo: Integer; FieldNo: Integer; LanguageCode: Code[10]): Text[30]
     var
         VFUsage: Record "33020517";
@@ -404,7 +404,7 @@ codeunit 50000 "STPL System Management"
         EXIT('');
     end;
 
-    [Scope('Internal')]
+    [Scope('OnPrem')]
     procedure getVariableFieldPRM(TableNo: Integer; FieldNo: Integer): Text[80]
     var
         VarFieldSetup: Record "33020517";
@@ -417,7 +417,7 @@ codeunit 50000 "STPL System Management"
             EXIT(VarFieldSetup."Variable Field Code");
     end;
 
-    [Scope('Internal')]
+    [Scope('OnPrem')]
     procedure GetMembershipNo(): Code[10]
     var
         Location: Record "14";
@@ -431,14 +431,14 @@ codeunit 50000 "STPL System Management"
             EXIT(AccountabilityCenter."Membership Nos.");
     end;
 
-    [Scope('Internal')]
+    [Scope('OnPrem')]
     procedure GetNoOfRecords(TableID: Integer)
     var
         CountRec: Integer;
     begin
     end;
 
-    [Scope('Internal')]
+    [Scope('OnPrem')]
     procedure InsertRegisterInvoice(TableID: Integer; DocumentNo: Code[20])
     var
         AccountingPeriod: Record "50";
@@ -514,7 +514,7 @@ codeunit 50000 "STPL System Management"
         END;
     end;
 
-    [Scope('Internal')]
+    [Scope('OnPrem')]
     procedure GetNepaliFiscalYear(PostingDate: Date): Text[30]
     var
         AccountingPeriod: Record "50";
@@ -527,7 +527,7 @@ codeunit 50000 "STPL System Management"
         END;
     end;
 
-    [Scope('Internal')]
+    [Scope('OnPrem')]
     procedure CalculateInvoiceTotals(TableNo: Integer; DocumentNo: Code[20]; var TotalSubTotal: Decimal; var TotalInvDiscAmount: Decimal; var TotalTaxableAmount: Decimal; var TotalAmountVAT: Decimal; var TotalAmountInclVAT: Decimal)
     var
         Currency: Record "4";
@@ -602,7 +602,7 @@ codeunit 50000 "STPL System Management"
 
     end;
 
-    [Scope('Internal')]
+    [Scope('OnPrem')]
     procedure SetInActiveInvoices(DocumentNo: Code[20])
     var
         SalesInvHeader: Record "112";
@@ -654,7 +654,7 @@ codeunit 50000 "STPL System Management"
 
     end;
 
-    [Scope('Internal')]
+    [Scope('OnPrem')]
     procedure ModifySalesInvPrintInformation(var SalesInvoiceHeader: Record "112")
     var
         RegisterofInvoiceNoSeries: Record "33020293";
@@ -675,7 +675,7 @@ codeunit 50000 "STPL System Management"
         END;
     end;
 
-    [Scope('Internal')]
+    [Scope('OnPrem')]
     procedure CheckSalesHeaderOnSalesPost(SalesHeader: Record "36")
     var
         SalesSetup: Record "311";
@@ -684,7 +684,7 @@ codeunit 50000 "STPL System Management"
         SalesSetup.TESTFIELD("Exact Cost Reversing Mandatory");
     end;
 
-    [Scope('Internal')]
+    [Scope('OnPrem')]
     procedure CheckSalesLineOnSalesPost(SalesHeader: Record "36")
     var
         SalesLine: Record "37";
@@ -700,7 +700,7 @@ codeunit 50000 "STPL System Management"
             UNTIL SalesLine.NEXT = 0;
     end;
 
-    [Scope('Internal')]
+    [Scope('OnPrem')]
     procedure ModifySalesCrInvPrintInformati(var SalesCrMemoHeader: Record "114")
     var
         RegisterofInvoiceNoSeries: Record "33020293";
@@ -721,7 +721,7 @@ codeunit 50000 "STPL System Management"
         END;
     end;
 
-    [Scope('Internal')]
+    [Scope('OnPrem')]
     procedure CheckDuplicateVATRegNo(TableNo: Integer; VATRegNo: Text[30]; VendCustNo: Code[20])
     var
         Customer: Record "18";
@@ -750,7 +750,7 @@ codeunit 50000 "STPL System Management"
             END;
     end;
 
-    [Scope('Internal')]
+    [Scope('OnPrem')]
     procedure getLocWiseImpOrdNoSeries("Document Profile": Option Purchase,Sales,Service,Transfer; "Document Type": Option Quote,"Blanket Order","Order","Return Order",Invoice,"Posted Invoice","Credit Memo","Posted Credit Memo","Posted Shipment","Posted Receipt","Posted Prepmt. Inv.","Posted Prepmt. Cr. Memo","Posted Return Receipt","Posted Return Shipment",Booking,"Posted Order","Posted Debit Note"): Code[10]
     var
         Location: Record "14";
@@ -965,14 +965,14 @@ codeunit 50000 "STPL System Management"
         END;
     end;
 
-    [Scope('Internal')]
+    [Scope('OnPrem')]
     procedure CheckReturnAmtQtyEditable(): Boolean
     begin
         GeneralLedgSetup.GET;
         EXIT(NOT GeneralLedgSetup."Exact Return Amount Mandatory");
     end;
 
-    [Scope('Internal')]
+    [Scope('OnPrem')]
     procedure CheckReturnAmtWithInvoiceDocument(TableID: Integer; DocumentNo: Code[20])
     var
         PurchHdr: Record "38";
@@ -1092,7 +1092,7 @@ codeunit 50000 "STPL System Management"
 
     end;
 
-    [Scope('Internal')]
+    [Scope('OnPrem')]
     procedure CopyPurchInvHeaderToPurchLine(var FromPurchLine: Record "39"; PurchInvHeaderNo: Code[20])
     begin
         FromPurchLine."Returned Document No." := PurchInvHeaderNo;
@@ -1334,7 +1334,7 @@ codeunit 50000 "STPL System Management"
         TestLedgerEntryExist(DATABASE::"FA Posting Group", DATABASE::"FA Ledger Entry", ChangeRecordTxt, xRec.Code, xRec.Code);
     end;
 
-    [Scope('Internal')]
+    [Scope('OnPrem')]
     procedure TestLedgerEntryExist(MasterTableID: Integer; LedgEntryTableID: Integer; CurrentFieldName: Text[250]; PrimaryKey1: Code[20]; PrimaryKey2: Code[20])
     var
         Item: Record "27";
@@ -1535,7 +1535,7 @@ codeunit 50000 "STPL System Management"
         END;
     end;
 
-    [Scope('Internal')]
+    [Scope('OnPrem')]
     procedure SetSyncStatus(var InvoiceMaterializeView: Record "33020293")
     var
         CBMSMgt: Codeunit "33020513";
@@ -1561,21 +1561,21 @@ codeunit 50000 "STPL System Management"
         END;
     end;
 
-    [Scope('Internal')]
+    [Scope('OnPrem')]
     procedure OnAfterCopyTransferHeaderToTransShptHeader(TransferHdr: Record "5740"; var TransferShptHdr: Record "5744")
     begin
         TransferShptHdr."Shipped By User" := USERID;
         TransferShptHdr."User ID" := TransferHdr."Assigned User ID";
     end;
 
-    [Scope('Internal')]
+    [Scope('OnPrem')]
     procedure OnAfterCopyTransferHeaderToTransRcptHeader(TransferHdr: Record "5740"; var TransRcptHdr: Record "5746")
     begin
         TransRcptHdr."Received By User" := USERID;
         TransRcptHdr."User ID" := TransferHdr."Assigned User ID";
     end;
 
-    [Scope('Internal')]
+    [Scope('OnPrem')]
     procedure InsertSMSDetail(MessageType: Option Bill,Job,Birthday,"Service Reminder","Revised Job",KAM,"Service Booking","Service Booking Reminder","Credit Bill","Credit Bill Due Date Reminder","Credit Bill Due Date Crossed Reminder","EMI Due Reminder","Credit Bill Follow up","Apporximate Estimate"; DocumentNo: Code[20]; MobileNumber: Text; TextMessage: Text)
     var
         SMSTemplate: Record "33020257";
@@ -1614,7 +1614,7 @@ codeunit 50000 "STPL System Management"
         END;
     end;
 
-    [Scope('Internal')]
+    [Scope('OnPrem')]
     procedure UpdateInvoiceRoundingLineInReturnOrder(SalesHdr: Record "36")
     var
         SalesInvLine: Record "113";
@@ -1659,7 +1659,7 @@ codeunit 50000 "STPL System Management"
         END;
     end;
 
-    [Scope('Internal')]
+    [Scope('OnPrem')]
     procedure GetVehicleInsuranceDetails(VehSerialNo: Code[20]; InsuranceActivity_: Option "New Policy","Body Addition","Value Addition",Renewal,Cancellation,Passenger; var VehicleInsurance: Record "25006033"): Boolean
     begin
         VehicleInsurance.RESET;
@@ -1677,7 +1677,7 @@ codeunit 50000 "STPL System Management"
         EXIT(FALSE);
     end;
 
-    [Scope('Internal')]
+    [Scope('OnPrem')]
     procedure LookupVehicleInsurance(VehSerialNo: Code[20]; InsuranceActivity_: Option "New Policy","Body Addition","Value Addition",Renewal,Cancellation,Passenger)
     var
         VehicleInsurance: Record "25006033";
@@ -1695,7 +1695,7 @@ codeunit 50000 "STPL System Management"
             PAGE.RUN(PAGE::"Vehicle Insurance", VehicleInsurance)
     end;
 
-    [Scope('Internal')]
+    [Scope('OnPrem')]
     procedure InserRescheduleSMS(DocumentProfile: Option " ","Spare Parts Trade","Vehicles Trade",Service,"Battery Sales"; "Code": Code[20]; MessageType: Option Bill,Job,Birthday,"Service Reminder","Revised Job",KAM,"Service Booking","Service Booking Reminder","Credit Bill","Credit Bill Due Date Reminder","Credit Bill Due Date Crossed Reminder","EMI Due Reminder","Credit Bill Follow up","IT Alert",Anniversary,"Employee Birthday","Battery Recharge","Battery Replace","Battery Others","Reschedule VF"; MobileNo: Code[50]; CompanyName: Text[100]; TextField1: Text[100]; TextField2: Text[250]; RescheduleDate: Date; Amount: Decimal; Percent: Decimal)
     var
         SMSTemplates: Record "33020257";
@@ -1756,7 +1756,7 @@ codeunit 50000 "STPL System Management"
         END;
     end;
 
-    [Scope('Internal')]
+    [Scope('OnPrem')]
     procedure SendSMS(): Boolean
     var
         SalesSetup: Record "311";
@@ -1769,7 +1769,7 @@ codeunit 50000 "STPL System Management"
         EXIT(SalesSetup."Activate SMS System");
     end;
 
-    [Scope('Internal')]
+    [Scope('OnPrem')]
     procedure insertPurchaseOrderFromProcument(Procument: Record "130415")
     var
         PurchaseHeader: Record "38";
@@ -1795,7 +1795,7 @@ codeunit 50000 "STPL System Management"
         END;
     end;
 
-    [Scope('Internal')]
+    [Scope('OnPrem')]
     procedure insertIntoServiceLedger(Vehi: Record "25006005"; KM: Decimal)
     var
         ServLedgEntry: Record "25006167";
@@ -1833,7 +1833,7 @@ codeunit 50000 "STPL System Management"
         Vehi.MODIFY;
     end;
 
-    [Scope('Internal')]
+    [Scope('OnPrem')]
     procedure isBAW(): Boolean
     var
         CompInfo: Record "79";
@@ -1842,7 +1842,7 @@ codeunit 50000 "STPL System Management"
         EXIT(CompInfo."Balaju Auto Works");
     end;
 
-    [Scope('Internal')]
+    [Scope('OnPrem')]
     procedure SendEmailForRejectApplicant(EmailAddress: Text[100])
     var
         SenderName: Text[90];
@@ -1875,7 +1875,7 @@ codeunit 50000 "STPL System Management"
 
     end;
 
-    [Scope('Internal')]
+    [Scope('OnPrem')]
     procedure SendEmailForShortlistApplicant(EmailAddress: Text[100])
     var
         SenderName: Text[90];
@@ -1908,7 +1908,7 @@ codeunit 50000 "STPL System Management"
 
     end;
 
-    [Scope('Internal')]
+    [Scope('OnPrem')]
     procedure CreateFALogEntry(FANo: Code[20]; TravelDate: Date; EmployeeNo: Code[20]; TravelTime: Time; OdometerOpening: Decimal; TravelType: Option; FromDes: Text[70]; ToDes: Text[70]; DriverName: Text[70]; TotalTripDis: Decimal; FuelQuantity: Decimal; MemoNo: Code[20]; MaintainanceCost: Decimal; GatePassNo: Code[20]; Purpose: Text[250])
     var
         FALogEntry: Record "33020799";
@@ -1947,7 +1947,7 @@ codeunit 50000 "STPL System Management"
         FALogEntry.INSERT;
     end;
 
-    [Scope('Internal')]
+    [Scope('OnPrem')]
     procedure CreateGatePass(DocumentType: Option " ",Admin,"Spare Parts Trade","Vehicle Trade","Vehicle Service"; ExtDocType: Option " ","FA Transfer",Repair,"Transfer Order",Invoice,"Trail/Demo","Closed Job","Vehicle Trial"; ExtDocNo: Code[20]; SellTocust: Text[100]; BillToCust: Text[100])
     var
         GatepassHeader: Record "50004";
@@ -1989,7 +1989,7 @@ codeunit 50000 "STPL System Management"
         GatepassPage.RUN;
     end;
 
-    [Scope('Internal')]
+    [Scope('OnPrem')]
     procedure CheckPipelineCust(CustNo: Code[20]): Boolean
     var
         Customer: Record "18";
@@ -2000,7 +2000,7 @@ codeunit 50000 "STPL System Management"
         EXIT(TRUE);
     end;
 
-    [Scope('Internal')]
+    [Scope('OnPrem')]
     procedure getLocWiseNoSeriesForDocFromDealer("Document Profile": Option Purchase,Sales,Service,Transfer; "Document Type": Option Quote,"Blanket Order","Order","Return Order",Invoice,"Posted Invoice","Credit Memo","Posted Credit Memo","Posted Shipment","Posted Receipt","Posted Prepmt. Inv.","Posted Prepmt. Cr. Memo","Posted Return Receipt","Posted Return Shipment",Booking,"Posted Order","Posted Debit Note"; LocationCode: Code[10]): Code[10]
     var
         Location: Record "14";
