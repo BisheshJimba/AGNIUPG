@@ -145,7 +145,6 @@ table 2000000 "Procurement Budget Analysis"
             EXIT(AccountingPeriods."Starting Date");
     end;
 
-    [Scope('Internal')]
     procedure GetNewLineNo(MemoNo: Code[20]): Integer
     begin
         BudgetAnalysis.SETRANGE("Memo No.", MemoNo);

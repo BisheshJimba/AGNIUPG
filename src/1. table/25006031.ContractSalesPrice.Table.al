@@ -178,25 +178,25 @@ table 25006031 "Contract Sales Price"
         field(5700; "Variant Code"; Code[20])
         {
             Caption = 'Variant Code';
-            TableRelation = IF (Type = CONST(Item)) "Item Variant".Code WHERE(I"tem No."=FIELD(Code));
+            TableRelation = IF (Type = CONST(Item)) "Item Variant".Code WHERE("Item No." = FIELD(Code));
         }
-        field(7001;"Allow Line Disc.";Boolean)
+        field(7001; "Allow Line Disc."; Boolean)
         {
             Caption = 'Allow Line Disc.';
             InitValue = true;
         }
-        field(25006000;"Document Profile";Option)
+        field(25006000; "Document Profile"; Option)
         {
             Caption = 'Document Profile';
             OptionCaption = ' ,Spare Parts Trade,Service';
             OptionMembers = " ","Spare Parts Trade",Service;
         }
-        field(25006700;"Ordering Price Type Code";Code[10])
+        field(25006700; "Ordering Price Type Code"; Code[10])
         {
             Caption = 'Ordering Price Type Code';
             TableRelation = "Ordering Price Type";
         }
-        field(25006770;"Location Code";Code[20])
+        field(25006770; "Location Code"; Code[20])
         {
             Caption = 'Location Code';
             TableRelation = Location;
@@ -205,7 +205,7 @@ table 25006031 "Contract Sales Price"
 
     keys
     {
-        key(Key1;"Contract Type","Contract No.",Type,"Code","Starting Date","Currency Code","Variant Code","Unit of Measure Code","Minimum Quantity","Ordering Price Type Code","Location Code","Document Profile","Vehicle Serial No.")
+        key(Key1; "Contract Type", "Contract No.", Type, "Code", "Starting Date", "Currency Code", "Variant Code", "Unit of Measure Code", "Minimum Quantity", "Ordering Price Type Code", "Location Code", "Document Profile", "Vehicle Serial No.")
         {
             Clustered = true;
         }
@@ -217,17 +217,17 @@ table 25006031 "Contract Sales Price"
 
     var
         Text000: Label '%1 cannot be after %2';
-        Cust: Record 18;
-        Campaign: Record 5071;
-        Item: Record 27;
-        Vehicle: Record 25006005;
-        Contract: Record 25006016;
-        cuLookupMgt: Codeunit 25006003;
+        Cust: Record Customer;
+        Campaign: Record Campaign;
+        Item: Record Item;
+        Vehicle: Record Vehicle;
+        Contract: Record Contract;
+        cuLookupMgt: Codeunit LookUpManagement;
         Text100: Label 'Don''t forget to set %1';
 
     local procedure TestStatusOpen()
     begin
-        Contract.TESTFIELD(Status,Contract.Status::Inactive);
+        Contract.TESTFIELD(Status, Contract.Status::Inactive);
     end;
 }
 

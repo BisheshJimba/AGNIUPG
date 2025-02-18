@@ -70,8 +70,8 @@ table 25006017 "Contract Sales Line Discount"
         field(50; "No."; Code[20])
         {
             Caption = 'No.';
-            TableRelation = IF (Type = CONST(Labor)) "Service Labor".No.
-                            ELSE IF (Type = CONST("Item Category")) "Item Category".Code
+            TableRelation = IF (Type = CONST(Labor)) "Service Labor"."No."
+            ELSE IF (Type = CONST("Item Category")) "Item Category".Code
             ELSE IF (Type = CONST("Labor Discount Group")) "Service Labor Discount Group".Code;
 
             trigger OnValidate()

@@ -1,7 +1,7 @@
 {
   "id": "725d8e05-c076-4107-95f9-ed44ba1a223c",
   "name": "AGNIUPG",
-  "publisher": "Default Publisher",
+  "publisher": "Agile Solutions",
   "version": "1.0.0.0",
   "brief": "",
   "description": "",
@@ -13,11 +13,11 @@
   "dependencies": [],
   "screenshots": [],
   "platform": "1.0.0.0",
-  "target": "OnPrem",
+  "target": "Cloud",
   "application": "25.0.0.0",
   "resourceExposurePolicy": {
     "allowDebugging": true,
-    "allowDownloadingSource": true,
+    "allowDownloadingSource": false,
     "includeSourceInSymbolFile": true
   },
   "runtime": "14.0",

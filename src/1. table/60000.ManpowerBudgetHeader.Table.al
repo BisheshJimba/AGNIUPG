@@ -57,7 +57,6 @@ table 60000 "Manpower Budget Header"
         GblMnpwrBdgtLine: Record "Manpower Budget Line";
         GblMnpwrBdgtEntry: Record "Manpower Budget Entry";
 
-    [Scope('Internal')]
     procedure checkFiscalYearFormat(PrmFiscalYear: Code[10])
     var
         Text001: Label 'Fiscal Year format must be of "0000/0000" - format you entered is not valid. Please enter correct format. Ex. - "2068/2069". Or contact your system administrator.';

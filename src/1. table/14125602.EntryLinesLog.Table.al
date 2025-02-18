@@ -110,7 +110,6 @@ table 14125602 "Entry Lines Log"
     var
         DimMgt: Codeunit DimensionManagement;
 
-    [Scope('Internal')]
     procedure UpdateDimension(var TempTable: Record "Entry Lines Temp")
     var
         LogTable: Record "SMS Setup 1";

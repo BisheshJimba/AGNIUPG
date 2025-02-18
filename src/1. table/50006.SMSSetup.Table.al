@@ -111,7 +111,6 @@ table 50006 "SMS Setup"
         ExchangeAccountNotConfiguredErr: Label 'The Exchange account is not configured.';
         Text001: Label 'Autodiscovery of Exchange Service failed.';
 
-    [Scope('Internal')]
     procedure SetPassword(PasswordText: Text)
     var
         ServicePassword: Record "Service Password";
@@ -126,7 +125,6 @@ table 50006 "SMS Setup"
         END;
     end;
 
-    [Scope('Internal')]
     procedure GetPassword(): Text
     var
         ServicePassword: Record "Service Password";

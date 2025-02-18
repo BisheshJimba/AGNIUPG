@@ -285,7 +285,6 @@ table 130416 "Vendor Line"
         LookUpMgt: Codeunit LookUpManagement;
         SalesPrice: Record "Sales Price";
 
-    [Scope('Internal')]
     procedure GetNewLineNo(MemoNo: Code[20]): Integer
     var
         BudgetAnalysisProc: Record "Procurement Budget Analysis";

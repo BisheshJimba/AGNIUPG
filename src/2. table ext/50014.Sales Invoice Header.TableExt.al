@@ -317,7 +317,7 @@ tableextension 50014 tableextension50014 extends "Sales Invoice Header"
                 recModelVersion: Record Item;
             begin
                 recModelVersion.RESET;
-                // IF cuLookUpMgt.LookUpModelVersion(recModelVersion, "Model Version No.", "Make Code", "Model Code") THEN;//internal scope error
+                IF cuLookUpMgt.LookUpModelVersion(recModelVersion, "Model Version No.", "Make Code", "Model Code") THEN;//internal scope error
             end;
         }
         field(25006377; "Quote Applicable To Date"; Date)

@@ -282,7 +282,7 @@ table 50004 "Gatepass Header"
         VehicleContact: Record "Vehicle Contact";
         Vehicle: Record Vehicle;
 
-    [Scope('Internal')]
+    // [Scope('OnPrem')]
     procedure AssistEdit(xGatePass: Record "Gatepass Header"): Boolean
     begin
         AdminSetup.GET;
@@ -295,7 +295,7 @@ table 50004 "Gatepass Header"
         END;
     end;
 
-    // [Scope('Internal')]
+
     procedure TestNoSeries(): Boolean
     begin
         CASE "Document Type" OF
