@@ -1,7 +1,7 @@
 {
   "id": "725d8e05-c076-4107-95f9-ed44ba1a223c",
   "name": "AGNIUPG",
-  "publisher": "Default Publisher",
+  "publisher": "Agile Solutions",
   "version": "1.0.0.0",
   "brief": "",
   "description": "",
@@ -10,14 +10,27 @@
   "help": "",
   "url": "",
   "logo": "",
-  "dependencies": [],
+  "dependencies": [
+    {
+      "id": "79ffa5d6-75be-4e33-b4c0-893bfb2b36bd",
+      "name": "Nepal_IRD_Localization",
+      "publisher": "Agile Solutions Pvt. Ltd.",
+      "version": "1.0.0.45"
+    },
+    {
+      "id": "ff68e790-8744-45ca-ac0d-5e69f5990336",
+      "name": "Agile Automotive 365",
+      "publisher": "Agile Solutions Pvt. Ltd.",
+      "version": "1.0.0.22"
+    }
+  ],
   "screenshots": [],
   "platform": "1.0.0.0",
   "target": "OnPrem",
   "application": "25.0.0.0",
   "resourceExposurePolicy": {
     "allowDebugging": true,
-    "allowDownloadingSource": true,
+    "allowDownloadingSource": false,
     "includeSourceInSymbolFile": true
   },
   "runtime": "14.0",

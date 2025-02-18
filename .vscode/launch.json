@@ -1,6 +1,26 @@
 {
     "version": "0.2.0",
     "configurations": [
+        // {
+        //     "name": "Publish: Agile Server",
+        //     "type": "al",
+        //     "request": "launch",
+        //     "environmentType": "OnPrem",
+        //     "server": "http://52.163.63.44",
+        //     "port": 7049,
+        //     "serverInstance": "BC250",
+        //     "authentication": "UserPassword",
+        //     "startupObjectId": 22,
+        //     "breakOnError": "All",
+        //     "breakOnRecordWrite": "None",
+        //     "launchBrowser": true,
+        //     "enableSqlInformationDebugger": true,
+        //     "enableLongRunningSqlStatements": true,
+        //     "longRunningSqlStatementsThreshold": 500,
+        //     "numberOfSqlStatements": 10,
+        //     "tenant": "default",
+        //     "usePublicURLFromServer": true
+        // },
         {
             "name": "Your own server",
             "request": "launch",
